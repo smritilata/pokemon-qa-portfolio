@@ -50,12 +50,19 @@ Simply double-click `index.html` in Windows Explorer or open it in Google Chrome
 C:\Users\smrit\.gemini\antigravity\scratch\pokemon-qa-portfolio\index.html
 ```
 
-### Method 2: Deploy with Vercel (Instant Live Hosting)
-The portfolio includes [`vercel.json`](file:///C:/Users/smrit/.gemini/antigravity/scratch/pokemon-qa-portfolio/vercel.json) and a one-click deployment script [`deploy-vercel.bat`](file:///C:/Users/smrit/.gemini/antigravity/scratch/pokemon-qa-portfolio/deploy-vercel.bat).
+### Method 2: Deploy with Vercel (Production)
+The portfolio is deployed to Vercel production under your authenticated account:
 
-- **Current Live Vercel Link:** [https://fast-granite-fcdtbki.tmp.now](https://fast-granite-fcdtbki.tmp.now)
-- **Claim & Make Permanent:** [Claim Deployment](https://vercel.com/claim-deployment?code=f26cd1fc-3a03-4842-9e81-d0b40b8668cc)
-- **To Re-Deploy:** Simply double-click [`deploy-vercel.bat`](file:///C:/Users/smrit/.gemini/antigravity/scratch/pokemon-qa-portfolio/deploy-vercel.bat) to publish updates directly to your Vercel account.
+- **Official Live Production URL:** [https://pokemon-qa-portfolio.vercel.app](https://pokemon-qa-portfolio.vercel.app)
+- **Deployment Preview:** [https://pokemon-qa-portfolio-qbjsdly2t.vercel.app](https://pokemon-qa-portfolio-qbjsdly2t.vercel.app)
+- **Vercel Dashboard:** [Project Overview](https://vercel.com/smritilatasarkar2018-gmailcoms-projects/pokemon-qa-portfolio)
+- **GitHub Repository:** [https://github.com/smritilata/pokemon-qa-portfolio](https://github.com/smritilata/pokemon-qa-portfolio)
+
+Whenever you make updates, you can push them with:
+```bash
+git push
+```
+Or simply double-click [`deploy-vercel.bat`](file:///C:/Users/smrit/.gemini/antigravity/scratch/pokemon-qa-portfolio/deploy-vercel.bat).
 
 ### Method 3: Host on GitHub Pages (Free)
 1. Push this folder to a GitHub repository (e.g. `username.github.io` or `pokemon-qa-portfolio`).
