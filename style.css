@@ -1828,6 +1828,41 @@ body.theme-masterball .shell-stripe {
   border-radius: 4px;
 }
 
+.quest-repo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+  padding: 0.7rem 1.1rem;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  color: #0f172a;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: var(--transition-smooth);
+}
+
+.quest-repo-btn:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  transform: translateY(-2px);
+}
+
+.quest-repo-btn .ext-arrow {
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.quest-repo-btn:hover .ext-arrow {
+  transform: translate(2px, -2px);
+}
+
 /* ==========================================================================
    SECTION 5: EDUCATION / TRAINER ACADEMY
    ========================================================================== */

@@ -25,10 +25,10 @@ Featuring an **interactive 3D Pokéball summoning animation**, Web Audio API syn
    - **Gym Badges (Technical Skills & Arsenal)**:
      - Filterable by *Testing Types*, *Selenium & Java*, *SDLC & Agile Process*, *API & Database*, and *Tools & IDEs*.
    - **Deployment Quests (Featured Projects)**:
-     - *India MART Web Application Testing*
-     - *Shopper Stack E-commerce Testing*
-     - *Exploratory Testing on Kuku FM*
-     - *Login Page Automation using Selenium WebDriver*
+     - **India MART Web Application Testing** — [GitHub Repo](https://github.com/smritilata/Indiamart-application-testing)
+     - **Flipkart Login Automation (Selenium 4 & Java POM)** — [GitHub Repo](https://github.com/smritilata669/flipkart-selenium-automation)
+     - **Shopper Stack E-commerce Testing**
+     - **Exploratory Testing on Kuku FM**
    - **Trainer Academy (Education)**:
      - B.Tech in Electronics & Communication Engineering (ECE) from Techno International New Town (CGPA: 7.77 / 10).
 
