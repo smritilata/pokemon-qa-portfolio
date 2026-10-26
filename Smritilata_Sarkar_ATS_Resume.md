@@ -1,63 +1,68 @@
-# SMRITILATA SARKAR
-**Software QA Engineer | Test Automation & Manual QA Specialist**  
-Kolkata, India | +91 6294410077 | smritilatasarkar2018@gmail.com  
-[LinkedIn](https://linkedin.com/in/smritilata-sarkar-a81a4428a) | [GitHub](https://github.com/smritilata) | [Live Portfolio](https://pokemon-qa-portfolio.vercel.app)
+# Smritilata Sarkar  Software QA Engineer
+smritilatasarkar2018@gmail.com | +91 6294410077 | linkedin.com/in/smritilata-sarkar-a81a4428a  
+pokemon-qa-portfolio.vercel.app
 
 ---
 
-> **Core QA Mindset & Passion:**  
-> Unwavering curiosity and relentless patience are my greatest assets as a QA Engineer. I genuinely love the investigative craft of software testing—unraveling complex edge cases, validating AI voice behaviors, and advocating for user delight before code ever reaches production.
+## Summary
+Detail-oriented QA Engineer with 6 months of hands-on testing experience. Strong foundation in manual testing, test case and test scenario preparation, functional, regression, smoke and sanity testing, defect reporting, SDLC/STLC, basic API testing and SQL. Experienced in testing AI-powered voice-assistant workflows, including NLU intent recognition and LLM responses. Strong analytical, problem-solving and communication skills.
+
+*Personal Plus Point:* My natural curiosity and patience are my greatest strengths as a QA. I genuinely love software testing, asking "what if a user tries this?", and patiently uncovering subtle bugs so real users get a seamless experience.
 
 ---
 
-## PROFESSIONAL SUMMARY
-Detail-oriented **Software QA Engineer** with 6+ months of hands-on experience spanning **Manual Testing**, **Java & Selenium WebDriver Test Automation**, and **AI Voice/LLM Validation**. Experienced across the full **STLC/SDLC** in Agile teams, designing high-coverage test matrices, defect lifecycle tracking in **Jira**, **REST API testing**, and **SQL** backend verification. Passionate about quality engineering, with a proven ability to reduce regression overhead by **40%** via Page Object Model (POM) frameworks.
+## Experience
 
----
+### QA Intern, Mihup AI
+*07/2026 – 09/2026 | kolkata*
+- Performed manual and functional testing of an AI-powered in-car voice assistant across end-to-end user workflows.
+- Created and executed positive, negative, boundary, edge-case and conversational test scenarios for voice commands and user intents.
+- Validated NLU intent recognition, entity handling, fallback behaviour and variations in user phrasing.
+- Tested LLM-powered responses for relevance, accuracy, context handling and expected conversational behaviour.
+- Identified, documented and tracked functional, conversational and UI defects with reproduction steps, expected/actual results, severity and priority.
+- Performed regression and exploratory testing after fixes and collaborated with developers to reproduce, investigate and verify defects.
 
-## TECHNICAL COMPETENCIES
-- **Testing Disciplines:** Manual Testing, Automation Testing, Functional, Regression & Retesting, Smoke & Sanity, Usability, Cross-Browser Compatibility, Mobile & Responsive UI (iOS & Android), Boundary Value Analysis (BVA), Equivalence Partitioning (EP), Black-Box QA.
-- **Test Automation & Java:** Selenium WebDriver (v4), Core Java (OOPs, Collections, Exception Handling), TestNG, Page Object Model (POM), Maven (`pom.xml`), Dynamic XPath & CSS Locators, Explicit Synchronization, Alerts, Frames, Multi-Window Handling.
-- **AI Voice & LLM Testing:** AI-Powered Voice Assistant Testing, NLU (Natural Language Understanding) Intent Recognition, Entity Extraction, LLM Hallucination & Context Retention Validation, Conversational Fallback Handling.
-- **API, DB & Tools:** Basic API Testing, RESTful APIs, JSON, Postman, SQL Queries, Joins, RDBMS, DDL/DML, Jira (Defect Tracking & Triage), Chrome DevTools, Eclipse IDE, Git, GitHub, Requirements Traceability Matrix (RTM).
-
----
-
-## PROFESSIONAL EXPERIENCE
-
-### **QA Intern** | Mihup AI — Kolkata, India  
-*07/2026 – 09/2026*
-- Conducted manual and functional QA for an **AI-powered in-car voice assistant** across complete end-to-end user workflows.
-- Engineered and executed **300+ positive, negative, boundary, and conversational test scenarios** across diverse voice phrasings and noise conditions.
-- Validated **NLU intent recognition**, entity handling, fallback paths, and audited **LLM response accuracy** and multi-turn context retention.
-- Identified, logged, and tracked functional and conversational bugs in **Jira** with reproduction steps; verified fixes through regression testing.
-
-### **QA Intern** | Cycle of Samsara — Remote / Kolkata  
+### QA Intern, Cycle of Samsara
 *02/2026 – 04/2026*
-- Automated web authentication scenarios using **Selenium WebDriver** and **Core Java** across Chrome, Firefox, and Edge.
-- Validated login success/error messaging and responsive UI behavior, slashing repetitive manual regression testing efforts by **40%**.
-- Verified backend data accuracy by running SQL queries against database records post-execution.
+- Developed selenium webdriver automation scripts using Java for valid and invalid log-in scenarios.
+- validated log-in success/error messages across browsers.
+- Reduced repetitive manual testing efforts through test automation.
 
 ---
 
-## KEY TESTING & AUTOMATION PROJECTS
+## Skills
 
-### **Flipkart E-Commerce Test Automation (Selenium 4 & Java POM)**
-*GitHub: [github.com/smritilata669/flipkart-selenium-automation](https://github.com/smritilata669/flipkart-selenium-automation)* | *Selenium 4, Java, TestNG, Maven, POM*
-- Architected a modular **Page Object Model (POM)** test suite in Java & Selenium 4 for login authentication and OTP flows.
-- Configured **TestNG** test suites with Maven build execution (`pom.xml`), resilient dynamic XPaths, and explicit synchronization waits.
-
-### **India MART B2B Marketplace Web Application Testing**
-*GitHub: [github.com/smritilata/Indiamart-application-testing](https://github.com/smritilata/Indiamart-application-testing)* | *Manual Testing, Boundary Analysis, Jira*
-- Executed end-to-end functional, boundary, and usability testing covering user registration, search, and inquiry flows with **250+ test cases**.
-- Validated cross-browser responsiveness and logged defects with reproduction steps, severity, and priority in Jira with zero defect leakage.
-
-### **Shopper Stack E-Commerce & Kuku FM Mobile Audio Testing**
-*STLC, Integration QA & Mobile Exploratory*
-- Tested Admin, Merchant, and Customer modules (cart, checkout, payment flows) with RTM alignment; executed mobile exploratory testing on Kuku FM audio app.
+| Testing Types | Methodologies & Process | API & Database | Selenium |
+| :--- | :--- | :--- | :--- |
+| **Testing Types:** Automation Testing \| Manual Testing \| Functional Testing \| Regression & Retesting \| Smoke & Sanity Testing \| Usability Testing \| Cross-Browser & Exploratory Testing \| Responsive Testing (iOS & Android Mobile App Testing) \| UI Testing<br><br>**Tools:** Jira \| Chrome DevTools \| Eclipse | **Methodologies & Process:** SDLC & STLC \| Agile Scrum Methodology \| Test Case Design \| Test Scenarios \| Test Execution \| Defect Reporting \| RTM<br><br>**Core Java:** OOPs \| classes/objects \| inheritance \| polymorphism \| abstraction \| interfaces \| exception handling and collections | **API & Database:** RDBMS Concepts \| Functions \| Joins \| DML \| DDL \| TCL \| DCL \| Basic API Testing | **Selenium:** selenium architecture \| java selenium architecture \| locators \| dropdown \| mouse actions \| synchronization \| testNg \| alert \| frames \| windows \| web element interaction |
 
 ---
 
-## EDUCATION
-**Bachelor of Technology (B.Tech) in Electronics & Communication Engineering (ECE)**  
-Techno International New Town — Kolkata, India | *Graduation: 07/2025 | CGPA: 7.77 / 10.0*
+## Projects
+
+### India MART Web Application Testing
+- Tested registration, login, product search, inquiry flow, form validation, navigation and responsive behaviour.
+- Designed positive, negative, boundary and usability test cases; reported defects with severity, priority and reproduction details.
+- Performed regression and exploratory testing and validated cross-browser behaviour.
+
+### Shopper Stack E-commerce Testing
+- Tested Admin, Merchant and Customer modules including product management, cart, payment workflow, order placement and tracking.
+- Executed functional, integration, regression and exploratory testing and prepared test cases and defect reports.
+
+### Testing on shopper stack (e-commerce application)
+- Tested an e-commerce application with Admin, Merchant, and Customer modules including product management, user management, cart, payment, and order tracking. Performed functional testing, regression testing, test case execution.
+
+### Exploratory testing on kuku FM
+- performed exploratory testing on kuku FM, a audio story app and also logged in defect in the dtt for this.
+
+### Login Page Automation using selenium WebDriver
+- Developed automation test scripts for login functionality using Selenium WebDriver and Java.
+- Automated test scenarios for valid and invalid login credentials.
+- Performed browser testing and validated error/success messages.
+- Improved testing efficiency by reducing manual execution time.
+
+---
+
+## Education
+**B.Tech ECE, Techno International New Town**  
+CGPA: 7.77 | *07/2025*
