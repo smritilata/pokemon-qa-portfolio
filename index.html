@@ -145,83 +145,129 @@
         <div class="card-body">
           <div class="trainer-visual-box">
             <div class="hologram-rings"></div>
-            <!-- Custom SVG QA Champion Avatar -->
+            <!-- Custom SVG QA Champion Girl Avatar -->
             <div class="trainer-avatar-frame">
               <svg class="trainer-svg-art" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#1e293b"/>
+                  <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#eff6ff"/>
+                    <stop offset="50%" stop-color="#f0fdf4"/>
+                    <stop offset="100%" stop-color="#fef2f2"/>
+                  </linearGradient>
+                  <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#1f2937"/>
+                    <stop offset="50%" stop-color="#111827"/>
                     <stop offset="100%" stop-color="#0f172a"/>
                   </linearGradient>
-                  <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#3b82f6"/>
-                    <stop offset="100%" stop-color="#1d4ed8"/>
-                  </linearGradient>
-                  <linearGradient id="pokeRed" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="jacketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#ef4444"/>
                     <stop offset="100%" stop-color="#b91c1c"/>
                   </linearGradient>
-                  <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="6" result="blur" />
+                  <linearGradient id="whiteTrim" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="100%" stop-color="#f1f5f9"/>
+                  </linearGradient>
+                  <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="4" result="blur"/>
                     <feComposite in="SourceGraphic" in2="blur" operator="over"/>
                   </filter>
                 </defs>
 
-                <!-- Digital Hologram Ring Backdrop -->
-                <circle cx="140" cy="140" r="130" fill="url(#bgGlow)" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 6"/>
-                <circle cx="140" cy="140" r="115" stroke="#f43f5e" stroke-width="1.5" opacity="0.4"/>
-                <circle cx="140" cy="140" r="95" fill="#030712" fill-opacity="0.6"/>
+                <!-- Circular Backdrop Rings -->
+                <circle cx="140" cy="140" r="130" fill="url(#avatarBg)" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="6 6"/>
+                <circle cx="140" cy="140" r="116" stroke="#f43f5e" stroke-width="1.5" opacity="0.35"/>
+                <circle cx="140" cy="140" r="100" fill="#ffffff" fill-opacity="0.9"/>
 
-                <!-- Cyber Tech Grid in Background -->
-                <line x1="45" y1="140" x2="235" y2="140" stroke="#38bdf8" stroke-width="1" opacity="0.2"/>
-                <line x1="140" y1="45" x2="140" y2="235" stroke="#38bdf8" stroke-width="1" opacity="0.2"/>
+                <!-- Back Hair (Long cascading hair behind shoulders) -->
+                <path d="M96 90 C85 130 80 180 92 230 C100 232 110 220 108 190 C106 150 110 120 115 105 Z" fill="url(#hairGrad)"/>
+                <path d="M184 90 C195 130 200 180 188 230 C180 232 170 220 172 190 C174 150 170 120 165 105 Z" fill="url(#hairGrad)"/>
+                <ellipse cx="140" cy="115" rx="52" ry="58" fill="url(#hairGrad)"/>
 
-                <!-- QA Trainer Character Stylized Vector -->
-                <!-- Hair / Head -->
-                <circle cx="140" cy="100" r="44" fill="#18181b"/>
+                <!-- Neck & Shadow -->
+                <path d="M130 140 L130 170 L150 170 L150 140 Z" fill="#fde2d1"/>
+                <path d="M130 142 Q140 150 150 142 L150 150 Q140 156 130 150 Z" fill="#fbcfe8" opacity="0.6"/>
+
+                <!-- Female QA Trainer Jacket / Outfit -->
+                <path d="M90 235 C90 180 110 168 128 165 L140 178 L152 165 C170 168 190 180 190 235 Z" fill="url(#jacketGrad)"/>
+                <!-- Inner White Top with Cyan Trim -->
+                <path d="M124 165 L140 195 L156 165 Z" fill="url(#whiteTrim)"/>
+                <path d="M132 172 L140 190 L148 172 Z" fill="#0284c7"/>
+                <!-- White Jacket Collar Lapels -->
+                <path d="M102 170 Q124 162 138 180 L128 190 Q115 174 98 178 Z" fill="#ffffff"/>
+                <path d="M178 170 Q156 162 142 180 L152 190 Q165 174 182 178 Z" fill="#ffffff"/>
+                <!-- Pokéball Zipper Emblem -->
+                <circle cx="140" cy="198" r="8" fill="#ef4444" stroke="#0f172a" stroke-width="1.5"/>
+                <path d="M132 198 A8 8 0 0 0 148 198 Z" fill="#ffffff"/>
+                <line x1="132" y1="198" x2="148" y2="198" stroke="#0f172a" stroke-width="1.5"/>
+                <circle cx="140" cy="198" r="2.5" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+
                 <!-- Face -->
-                <ellipse cx="140" cy="106" rx="34" ry="38" fill="#fed7aa"/>
-                <!-- Bangs & Hairstyle -->
-                <path d="M106 90 Q140 70 174 90 Q150 78 140 85 Q130 78 106 90 Z" fill="#27272a"/>
-                <path d="M106 92 C102 120 102 145 110 160 C110 135 114 115 118 105 Z" fill="#18181b"/>
-                <path d="M174 92 C178 120 178 145 170 160 C170 135 166 115 162 105 Z" fill="#18181b"/>
-                <!-- Smart QA Glasses (HUD Specs) -->
-                <rect x="115" y="98" width="20" height="14" rx="3" fill="#0284c7" fill-opacity="0.25" stroke="#38bdf8" stroke-width="2"/>
-                <rect x="145" y="98" width="20" height="14" rx="3" fill="#0284c7" fill-opacity="0.25" stroke="#38bdf8" stroke-width="2"/>
-                <line x1="135" y1="105" x2="145" y2="105" stroke="#38bdf8" stroke-width="2"/>
-                <line x1="106" y1="105" x2="115" y2="105" stroke="#38bdf8" stroke-width="2"/>
-                <line x1="165" y1="105" x2="174" y2="105" stroke="#38bdf8" stroke-width="2"/>
-                <!-- Confident Expression -->
-                <ellipse cx="125" cy="105" rx="3" ry="3.5" fill="#0f172a"/>
-                <ellipse cx="155" cy="105" rx="3" ry="3.5" fill="#0f172a"/>
-                <circle cx="126" cy="104" r="1" fill="#ffffff"/>
-                <circle cx="156" cy="104" r="1" fill="#ffffff"/>
-                <path d="M134 124 Q140 129 146 124" stroke="#e11d48" stroke-width="2" stroke-linecap="round"/>
+                <ellipse cx="140" cy="115" rx="33" ry="36" fill="#fde2d1"/>
+                <path d="M112 110 C112 135 125 152 140 152 C155 152 168 135 168 110 C168 95 158 84 140 84 C122 84 112 95 112 110 Z" fill="#fde2d1"/>
 
-                <!-- Professional QA Cyber Outfit -->
-                <path d="M110 160 L170 160 L195 240 L85 240 Z" fill="url(#suitGrad)"/>
-                <!-- White Collared Shirt & Tie / Badge -->
-                <path d="M125 160 L140 190 L155 160 Z" fill="#f8fafc"/>
-                <polygon points="137,175 143,175 145,210 140,216 135,210" fill="#ef4444"/>
+                <!-- Cheerful Anime Female Eyes with Eyelashes -->
+                <!-- Left Eye -->
+                <ellipse cx="126" cy="118" rx="7" ry="9" fill="#1e293b"/>
+                <ellipse cx="126" cy="119" rx="5" ry="7" fill="#0369a1"/>
+                <ellipse cx="126" cy="121" rx="3.5" ry="4" fill="#0f172a"/>
+                <circle cx="124" cy="115" r="2.5" fill="#ffffff"/>
+                <circle cx="128" cy="122" r="1.2" fill="#ffffff"/>
+                <path d="M117 114 Q126 107 135 113" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M134 112 L137 109" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+                <path d="M118 104 Q127 99 135 103" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
 
-                <!-- Tech Gauntlet with Bug Detection Scanner (Left) -->
-                <rect x="75" y="185" width="28" height="38" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
-                <circle cx="89" cy="198" r="5" fill="#22c55e" filter="url(#neonGlow)"/>
-                <line x1="82" y1="210" x2="96" y2="210" stroke="#38bdf8" stroke-width="1.5"/>
-                <line x1="82" y1="215" x2="93" y2="215" stroke="#38bdf8" stroke-width="1.5"/>
+                <!-- Right Eye -->
+                <ellipse cx="154" cy="118" rx="7" ry="9" fill="#1e293b"/>
+                <ellipse cx="154" cy="119" rx="5" ry="7" fill="#0369a1"/>
+                <ellipse cx="154" cy="121" rx="3.5" ry="4" fill="#0f172a"/>
+                <circle cx="152" cy="115" r="2.5" fill="#ffffff"/>
+                <circle cx="156" cy="122" r="1.2" fill="#ffffff"/>
+                <path d="M145 113 Q154 107 163 114" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M162 112 L165 109" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+                <path d="M145 103 Q153 99 162 104" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
 
-                <!-- Floating Hologram Pokéball / Bug Scanner (Right) -->
-                <g filter="url(#neonGlow)">
-                  <circle cx="205" cy="180" r="18" fill="url(#pokeRed)"/>
-                  <path d="M187 180 A18 18 0 0 0 223 180 Z" fill="#ffffff"/>
-                  <line x1="187" y1="180" x2="223" y2="180" stroke="#0f172a" stroke-width="3"/>
-                  <circle cx="205" cy="180" r="6" fill="#ffffff" stroke="#0f172a" stroke-width="3"/>
-                  <circle cx="205" cy="180" r="2.5" fill="#38bdf8"/>
+                <!-- Rosy Blush -->
+                <ellipse cx="118" cy="128" rx="6" ry="3.5" fill="#f43f5e" opacity="0.35"/>
+                <ellipse cx="162" cy="128" rx="6" ry="3.5" fill="#f43f5e" opacity="0.35"/>
+
+                <!-- Dainty Nose & Smile -->
+                <circle cx="140" cy="126" r="1" fill="#ea580c"/>
+                <path d="M134 135 Q140 142 146 135" stroke="#e11d48" stroke-width="2" stroke-linecap="round" fill="#fda4af"/>
+
+                <!-- Front Hair Bangs & Side Strands -->
+                <path d="M106 100 Q120 78 140 78 Q160 78 174 100 Q158 88 140 88 Q122 88 106 100 Z" fill="url(#hairGrad)"/>
+                <path d="M112 92 C116 108 120 114 126 112 C124 102 124 96 122 92 Z" fill="url(#hairGrad)"/>
+                <path d="M125 90 C130 110 135 115 140 112 C138 102 136 94 134 90 Z" fill="url(#hairGrad)"/>
+                <path d="M140 90 C146 112 152 115 156 110 C154 100 150 94 148 90 Z" fill="url(#hairGrad)"/>
+                <path d="M110 96 C105 116 106 142 114 158 C115 140 115 118 118 105 Z" fill="url(#hairGrad)"/>
+                <path d="M170 96 C175 116 174 142 166 158 C165 140 165 118 162 105 Z" fill="url(#hairGrad)"/>
+                <path d="M122 85 Q140 82 158 85" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+                <!-- Red Ribbon Hair Clip -->
+                <circle cx="106" cy="94" r="6" fill="#ef4444"/>
+                <circle cx="106" cy="94" r="2.5" fill="#ffffff"/>
+
+                <!-- QA AI Voice Headset with Microphone -->
+                <path d="M107 106 C106 82 120 68 140 68 C160 68 174 82 173 106" stroke="#0284c7" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <rect x="100" y="106" width="10" height="18" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+                <rect x="170" y="106" width="10" height="18" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+                <path d="M104 122 Q112 136 128 136" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <circle cx="129" cy="136" r="3" fill="#22c55e" filter="url(#glowEffect)"/>
+
+                <!-- Floating Hologram Pokéball & Testing Sparks -->
+                <g filter="url(#glowEffect)">
+                  <circle cx="212" cy="180" r="18" fill="url(#jacketGrad)"/>
+                  <path d="M194 180 A18 18 0 0 0 230 180 Z" fill="#ffffff"/>
+                  <line x1="194" y1="180" x2="230" y2="180" stroke="#0f172a" stroke-width="2.5"/>
+                  <circle cx="212" cy="180" r="6" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+                  <circle cx="212" cy="180" r="2.5" fill="#0284c7"/>
                 </g>
 
-                <!-- Floating QA Sparks / Defect Cleanse Aura -->
-                <path d="M60 90 L65 100 L75 105 L65 110 L60 120 L55 110 L45 105 L55 100 Z" fill="#fbbf24" opacity="0.8"/>
-                <path d="M220 85 L224 93 L232 97 L224 101 L220 109 L216 101 L208 97 L216 93 Z" fill="#38bdf8" opacity="0.8"/>
+                <!-- Floating QA Sparkles -->
+                <path d="M64 90 L68 98 L76 102 L68 106 L64 114 L60 106 L52 102 L60 98 Z" fill="#fbbf24"/>
+                <circle cx="78" cy="120" r="2.5" fill="#38bdf8"/>
+                <path d="M218 85 L222 92 L229 95 L222 98 L218 105 L214 98 L207 95 L214 92 Z" fill="#38bdf8"/>
+                <circle cx="204" cy="116" r="2" fill="#fbbf24"/>
               </svg>
             </div>
 
