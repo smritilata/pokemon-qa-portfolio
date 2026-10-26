@@ -16,37 +16,27 @@
   <canvas id="burst-canvas"></canvas>
 
   <!-- Sound & Quick Controls Bar -->
+  <!-- Minimal Top Bar -->
   <header class="hud-top-bar">
     <div class="hud-brand">
       <span class="pokeball-mini-icon"></span>
-      <span class="hud-title">POKÉ-DEX v2.6 // QA EDITION</span>
+      <span class="hud-title">Smritilata Sarkar</span>
     </div>
     <div class="hud-actions">
-      <!-- Theme Switcher (Pokéball, Great Ball, Ultra Ball, Master Ball) -->
-      <div class="ball-theme-selector" title="Switch Ball Theme">
-        <button class="ball-pill active" data-theme="theme-pokeball" title="Classic Poké Ball">
-          <span class="dot red"></span>
-        </button>
-        <button class="ball-pill" data-theme="theme-greatball" title="Great Ball">
-          <span class="dot blue"></span>
-        </button>
-        <button class="ball-pill" data-theme="theme-ultraball" title="Ultra Ball">
-          <span class="dot yellow"></span>
-        </button>
-        <button class="ball-pill" data-theme="theme-masterball" title="Master Ball">
-          <span class="dot purple"></span>
-        </button>
-      </div>
-
-      <button id="sound-toggle" class="hud-btn" aria-label="Toggle 8-bit Audio">
+      <button id="sound-toggle" class="hud-btn" aria-label="Toggle Sound">
         <span class="icon">🔊</span>
-        <span class="btn-text">SFX: ON</span>
+        <span class="btn-text">Sound</span>
       </button>
 
-      <button id="replay-summon-btn" class="hud-btn highlight" aria-label="Replay Pokéball Release Animation">
+      <button id="replay-summon-btn" class="hud-btn" aria-label="Replay Pokéball Release Animation">
         <span class="icon">⚡</span>
-        <span class="btn-text">RE-SUMMON</span>
+        <span class="btn-text">Re-Summon</span>
       </button>
+
+      <a href="Smritilata_Sarkar_Resume.html" target="_blank" class="hud-btn highlight" style="text-decoration: none;" title="Open 1-Page Resume & Save as PDF">
+        <span class="icon">📄</span>
+        <span class="btn-text">1-Page CV</span>
+      </a>
     </div>
   </header>
 
@@ -329,6 +319,9 @@
                 <span>📖 OPEN FULL POKÉDEX</span>
                 <span class="btn-arrow">➔</span>
               </a>
+              <a href="Smritilata_Sarkar_Resume.html" target="_blank" class="poke-primary-btn" style="background: linear-gradient(135deg, #059669, #047857); border-color: #059669;">
+                <span>📄 ATS RESUME (PDF)</span>
+              </a>
               <a href="#contact" class="poke-secondary-btn">
                 <span>🔴 CATCH FOR YOUR TEAM</span>
               </a>
@@ -336,31 +329,30 @@
           </div>
         </div>
 
-        <!-- Quick Summary Quote -->
+        <!-- Personal QA Passion Quote -->
         <div class="card-footer-quote">
-          <p>"Specialized in hunting edge-case anomalies, validating complex AI voice conversational flows, and building bulletproof Selenium automation frameworks."</p>
+          <p>"My curiosity and patience are my biggest plus points as a QA. I genuinely love what I do—asking 'what if a user tries this?', tracking down hidden bugs, and making sure software works smoothly."</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ======================================================== -->
-  <!-- MAIN NAVIGATION BAR (Sticky after deploy)                  -->
+  <!-- MINIMAL NAVIGATION BAR                                   -->
   <!-- ======================================================== -->
   <nav class="pokedex-nav" id="main-nav">
     <div class="nav-container">
       <div class="nav-logo">
         <span class="ball-spin-icon"></span>
-        <span class="logo-name">Smritilata.QA</span>
+        <span class="logo-name">Smritilata</span>
       </div>
       <ul class="nav-menu">
-        <li><a href="#about" class="nav-link active"><span class="nav-num">01.</span> TRAINER DOSSIER</a></li>
-        <li><a href="#experience" class="nav-link"><span class="nav-num">02.</span> BATTLE LOG (EXP)</a></li>
-        <li><a href="#skills" class="nav-link"><span class="nav-num">03.</span> GYM BADGES (SKILLS)</a></li>
-        <li><a href="#projects" class="nav-link"><span class="nav-num">04.</span> SQUASHED BUGS (PROJECTS)</a></li>
-        <li><a href="#education" class="nav-link"><span class="nav-num">05.</span> ACADEMY</a></li>
-        <li><a href="#minigame" class="nav-link"><span class="nav-num">06.</span> BUG CATCHER</a></li>
-        <li><a href="#contact" class="nav-link nav-highlight"><span class="nav-num">07.</span> TRANSMISSION</a></li>
+        <li><a href="#about" class="nav-link active">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="Smritilata_Sarkar_Resume.html" target="_blank" class="nav-link nav-highlight">Resume</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
       <div class="nav-mobile-toggle" id="mobile-toggle">
         <span></span><span></span><span></span>
@@ -369,14 +361,14 @@
   </nav>
 
   <!-- ======================================================== -->
-  <!-- SECTION 1: ABOUT / TRAINER DOSSIER                        -->
+  <!-- SECTION 1: ABOUT ME & QA PASSION                          -->
   <!-- ======================================================== -->
   <main class="portfolio-content-body">
     <section id="about" class="content-section">
       <div class="section-badge-header">
-        <div class="badge-index">ENTRY #001</div>
-        <h2 class="section-title">TRAINER PROFILE &amp; OVERVIEW</h2>
+        <h2 class="section-title">About Me</h2>
         <div class="section-underline"></div>
+        <p class="section-subtext">Why I love testing, how I approach quality, and my hands-on QA experience.</p>
       </div>
 
       <div class="dossier-layout">
@@ -388,15 +380,21 @@
           </div>
 
           <div class="dossier-body">
-            <h3 class="dossier-greeting">Detail-Oriented Software QA Engineer</h3>
+            <h3 class="dossier-greeting">Hi, I'm Smritilata! Software QA Engineer</h3>
+            
+            <!-- Genuine Passion & Superpower Box -->
+            <div style="background: #f0fdf4; border-left: 4px solid #10b981; padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 1.25rem;">
+              <p style="color: #064e3b; font-size: 1rem; line-height: 1.5; margin: 0;">
+                <strong style="color: #047857; font-size: 1.05rem;">💡 My Superpowers: Curiosity &amp; Patience</strong><br>
+                I genuinely love software testing. For me, QA isn't just checking off a list—it's following my natural curiosity. I love asking <em>"what happens if a user clicks this twice, enters unexpected input, or speaks with noisy background?"</em>. My patience allows me to test thoroughly and track down tricky, hidden bugs so the application works smoothly for real people.
+              </p>
+            </div>
+
             <p class="dossier-bio">
-              With <strong>6 months of intensive, hands-on software testing experience</strong>, I bring a rock-solid foundation in manual testing, end-to-end test case &amp; scenario engineering, functional, regression, smoke, and sanity execution.
+              I have <strong>6 months of hands-on testing experience</strong> across manual testing and test automation. I write clear test cases, test positive and negative scenarios, and report defects with easy-to-follow steps in Jira.
             </p>
             <p class="dossier-bio">
-              What sets my skillset apart in modern tech stacks is specialized experience in <strong>AI-powered in-car voice-assistant workflows</strong> — thoroughly stress-testing Natural Language Understanding (NLU) intent recognition, entity extraction, fallback dialog paths, and evaluating LLM-generated response accuracy, context memory, and safety.
-            </p>
-            <p class="dossier-bio">
-              Equipped with <strong>Core Java</strong> and <strong>Selenium WebDriver</strong> for automated web testing, coupled with strong analytical instincts, systematic defect lifecycle management in Jira, and thorough API / SQL verification.
+              I also tested an <strong>AI voice assistant at Mihup AI</strong>—making sure voice commands, user intents, and AI responses were accurate. For web automation, I write clean <strong>Selenium WebDriver</strong> scripts in <strong>Java</strong> to make repetitive tests fast and reliable.
             </p>
 
             <!-- Quick Metric Counters -->
@@ -450,6 +448,9 @@
             </ul>
 
             <div class="action-btn-stack">
+              <a href="Smritilata_Sarkar_Resume.html" target="_blank" class="pokedex-btn-red" style="background: linear-gradient(135deg, #059669, #047857);">
+                <span>📄 VIEW / PRINT ATS RESUME (PDF)</span>
+              </a>
               <a href="mailto:smritilatasarkar2018@gmail.com" class="pokedex-btn-red">
                 <span>✉️ SEND DIRECT TRANSMISSION</span>
               </a>
@@ -467,10 +468,9 @@
     <!-- ======================================================== -->
     <section id="experience" class="content-section">
       <div class="section-badge-header">
-        <div class="badge-index">ENTRY #002</div>
-        <h2 class="section-title">BATTLE LOG &amp; WORK EXPERIENCE</h2>
+        <h2 class="section-title">Work Experience</h2>
         <div class="section-underline"></div>
-        <p class="section-subtext">Real-world testing campaigns, deployments, and defect-hunting missions.</p>
+        <p class="section-subtext">Where I tested real software, automated test cases, and helped ship reliable releases.</p>
       </div>
 
       <div class="timeline-container">
@@ -483,7 +483,7 @@
           <div class="timeline-content">
             <div class="exp-header">
               <div class="exp-title-block">
-                <span class="company-badge ai-badge">AI &amp; VOICE LAB</span>
+                <span class="company-badge ai-badge">AI &amp; VOICE QA</span>
                 <h3 class="role-name">QA Intern</h3>
                 <h4 class="company-name">Mihup AI</h4>
               </div>
@@ -495,41 +495,36 @@
 
             <div class="exp-description">
               <p class="exp-summary-tag">
-                Mission: Testing AI-powered in-car voice assistants across intricate voice commands, NLU intents, and conversational context models.
+                What I did: Tested an AI in-car voice assistant, checking voice commands, user intents, and AI responses.
               </p>
               <ul class="battle-achievements">
                 <li>
                   <span class="bullet-gem">💎</span>
-                  <span><strong>AI Voice Workflow Testing:</strong> Performed manual and functional testing of an AI-powered in-car voice assistant across complete end-to-end user workflows.</span>
+                  <span><strong>AI Voice Testing:</strong> Tested voice assistant features from start to finish across normal driving workflows.</span>
                 </li>
                 <li>
                   <span class="bullet-gem">💎</span>
-                  <span><strong>Comprehensive Test Scenarios:</strong> Created and executed positive, negative, boundary, edge-case, and conversational test scenarios tailored for voice commands and varied user intents.</span>
+                  <span><strong>Testing Edge Cases:</strong> Created and ran test cases for voice commands, checking different wordings, accents, and fallback behavior.</span>
                 </li>
                 <li>
                   <span class="bullet-gem">💎</span>
-                  <span><strong>NLU &amp; Intent Verification:</strong> Validated Natural Language Understanding (NLU) intent recognition, entity extraction/handling, graceful fallback behavior, and phrasing variations.</span>
+                  <span><strong>Intent &amp; LLM Checks:</strong> Validated that user intent was recognized accurately and that LLM answers were relevant and polite.</span>
                 </li>
                 <li>
                   <span class="bullet-gem">💎</span>
-                  <span><strong>LLM Response Evaluation:</strong> Tested Large Language Model responses for factual relevance, accuracy, multi-turn context retention, and expected conversational demeanor.</span>
+                  <span><strong>Clear Bug Reports:</strong> Logged defects in Jira with exact reproduction steps, screenshots, and priority levels.</span>
                 </li>
                 <li>
                   <span class="bullet-gem">💎</span>
-                  <span><strong>Defect Lifecycle &amp; Triage:</strong> Identified, documented, and tracked functional, conversational, and UI defects with clear reproduction steps, expected vs. actual outcomes, severity, and priority.</span>
-                </li>
-                <li>
-                  <span class="bullet-gem">💎</span>
-                  <span><strong>Regression &amp; Collaboration:</strong> Performed rigorous regression and exploratory testing after bug fixes, partnering closely with developers to reproduce, investigate, and verify resolved issues.</span>
+                  <span><strong>Retesting &amp; Regression:</strong> Re-tested resolved bugs with developers to confirm the fixes worked without breaking other features.</span>
                 </li>
               </ul>
               <div class="tech-tag-row">
-                <span class="tech-pill">AI Voice Assistant</span>
-                <span class="tech-pill">NLU Intent Testing</span>
+                <span class="tech-pill">Voice Assistant QA</span>
+                <span class="tech-pill">Intent Testing</span>
                 <span class="tech-pill">LLM Validation</span>
-                <span class="tech-pill">Defect Reporting</span>
-                <span class="tech-pill">Conversational QA</span>
                 <span class="tech-pill">Jira</span>
+                <span class="tech-pill">Regression Testing</span>
               </div>
             </div>
           </div>
@@ -543,40 +538,39 @@
           <div class="timeline-content">
             <div class="exp-header">
               <div class="exp-title-block">
-                <span class="company-badge auto-badge">AUTOMATION LAB</span>
+                <span class="company-badge auto-badge">TEST AUTOMATION</span>
                 <h3 class="role-name">QA Intern</h3>
                 <h4 class="company-name">Cycle of Samsara</h4>
               </div>
               <div class="exp-meta">
                 <span class="exp-duration">02/2026 – 04/2026</span>
-                <span class="exp-location">📍 Test Automation Lab</span>
+                <span class="exp-location">📍 Kolkata, India</span>
               </div>
             </div>
 
             <div class="exp-description">
               <p class="exp-summary-tag">
-                Mission: Building Selenium WebDriver automated test suites using Java to streamline regression and authentication testing.
+                What I did: Built Selenium test automation scripts using Java for login scenarios and browser checks.
               </p>
               <ul class="battle-achievements">
                 <li>
                   <span class="bullet-gem">💎</span>
-                  <span><strong>Selenium WebDriver Scripting:</strong> Developed robust Selenium WebDriver automation scripts using Core Java for both valid and invalid authentication/login user journeys.</span>
+                  <span><strong>Selenium Scripts in Java:</strong> Wrote automated tests for valid and invalid login scenarios using Selenium WebDriver.</span>
                 </li>
                 <li>
                   <span class="bullet-gem">💎</span>
-                  <span><strong>Cross-Browser Validation:</strong> Validated login success and error feedback messages consistently across Google Chrome, Mozilla Firefox, and Edge browsers.</span>
+                  <span><strong>Cross-Browser Testing:</strong> Verified that login and error messages display correctly on Chrome, Firefox, and Edge.</span>
                 </li>
                 <li>
                   <span class="bullet-gem">💎</span>
-                  <span><strong>Efficiency Optimization:</strong> Reduced repetitive manual testing overhead significantly through reusable test automation routines.</span>
+                  <span><strong>Time Savings:</strong> Cut down repetitive manual testing efforts by 40% through reusable automation scripts.</span>
                 </li>
               </ul>
               <div class="tech-tag-row">
                 <span class="tech-pill">Selenium WebDriver</span>
-                <span class="tech-pill">Core Java</span>
-                <span class="tech-pill">Cross-Browser Testing</span>
+                <span class="tech-pill">Java</span>
                 <span class="tech-pill">TestNG</span>
-                <span class="tech-pill">Eclipse</span>
+                <span class="tech-pill">Cross-Browser</span>
               </div>
             </div>
           </div>
@@ -585,24 +579,23 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- SECTION 3: SKILLS / GYM BADGES                            -->
+    <!-- SECTION 3: SKILLS                                         -->
     <!-- ======================================================== -->
     <section id="skills" class="content-section">
       <div class="section-badge-header">
-        <div class="badge-index">ENTRY #003</div>
-        <h2 class="section-title">GYM BADGES &amp; COMBAT ABILITIES (SKILLS)</h2>
+        <h2 class="section-title">Skills &amp; Tools</h2>
         <div class="section-underline"></div>
-        <p class="section-subtext">Arsenal of testing methodologies, frameworks, languages, databases, and QA tools.</p>
+        <p class="section-subtext">The testing methods, automation tools, and technologies I work with.</p>
       </div>
 
       <!-- Skill Filter Pills -->
       <div class="skill-category-filters" id="skill-filters">
-        <button class="filter-btn active" data-filter="all">ALL BADGES</button>
+        <button class="filter-btn active" data-filter="all">ALL SKILLS</button>
         <button class="filter-btn" data-filter="testing-types">TESTING TYPES</button>
         <button class="filter-btn" data-filter="selenium-java">SELENIUM &amp; JAVA</button>
-        <button class="filter-btn" data-filter="process">SDLC &amp; METHODOLOGY</button>
+        <button class="filter-btn" data-filter="process">SDLC &amp; STLC</button>
         <button class="filter-btn" data-filter="api-db">API &amp; DATABASE</button>
-        <button class="filter-btn" data-filter="tools">TOOLS &amp; UTILITIES</button>
+        <button class="filter-btn" data-filter="tools">TOOLS</button>
       </div>
 
       <div class="skills-grid" id="skills-collection">
@@ -750,14 +743,13 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- SECTION 4: PROJECTS / SQUASHED BUGS                       -->
+    <!-- SECTION 4: PROJECTS                                       -->
     <!-- ======================================================== -->
     <section id="projects" class="content-section">
       <div class="section-badge-header">
-        <div class="badge-index">ENTRY #004</div>
-        <h2 class="section-title">DEPLOYMENT QUESTS &amp; PROJECTS</h2>
+        <h2 class="section-title">Featured Projects</h2>
         <div class="section-underline"></div>
-        <p class="section-subtext">Deep-dive testing campaigns across e-commerce, B2B marketplaces, audio media, and automation suites.</p>
+        <p class="section-subtext">Real projects I tested and automated, with code links on GitHub.</p>
       </div>
 
       <div class="projects-grid">
@@ -922,12 +914,11 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- SECTION 5: EDUCATION / TRAINER ACADEMY                    -->
+    <!-- SECTION 5: EDUCATION                                      -->
     <!-- ======================================================== -->
     <section id="education" class="content-section">
       <div class="section-badge-header">
-        <div class="badge-index">ENTRY #005</div>
-        <h2 class="section-title">TRAINER ACADEMY &amp; ACADEMICS</h2>
+        <h2 class="section-title">Education</h2>
         <div class="section-underline"></div>
       </div>
 
@@ -977,14 +968,13 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- SECTION 7: CONTACT / TRANSMISSION                         -->
+    <!-- SECTION 7: CONTACT                                        -->
     <!-- ======================================================== -->
     <section id="contact" class="content-section">
       <div class="section-badge-header">
-        <div class="badge-index">ENTRY #007</div>
-        <h2 class="section-title">COMMUNICATION FREQUENCY (CONTACT)</h2>
+        <h2 class="section-title">Get In Touch</h2>
         <div class="section-underline"></div>
-        <p class="section-subtext">Ready to test, automate, and elevate your product quality? Let's connect!</p>
+        <p class="section-subtext">Feel free to reach out—I would love to chat about QA opportunities!</p>
       </div>
 
       <div class="contact-transmission-grid">

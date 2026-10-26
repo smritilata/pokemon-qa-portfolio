@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smritilata Sarkar - Software QA Engineer Resume (One Page ATS)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 8mm 10mm;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      background: #f8fafc;
+      line-height: 1.35;
+      font-size: 11.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Minimal Top Bar (Screen Only) */
+    .top-action-bar {
+      max-width: 820px;
+      margin: 14px auto 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4px;
+    }
+
+    .ats-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .print-btn {
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.15s;
+    }
+
+    .print-btn:hover {
+      background: #0284c7;
+    }
+
+    /* One Page Sheet */
+    .resume-sheet {
+      max-width: 820px;
+      margin: 0 auto 30px;
+      background: #ffffff;
+      padding: 24px 34px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 4px;
+    }
+
+    /* Minimal Header */
+    header.resume-header {
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    h1.applicant-name {
+      font-size: 21px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+
+    .target-role {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0284c7;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+
+    .contact-bar {
+      font-size: 11px;
+      color: #475569;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+    }
+
+    .contact-bar a {
+      color: #0284c7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-bar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Passion / Philosophy Callout */
+    .passion-quote-box {
+      background: #f0fdf4;
+      border-left: 3px solid #10b981;
+      padding: 5px 10px;
+      margin-bottom: 8px;
+      border-radius: 0 4px 4px 0;
+      font-size: 11px;
+      color: #064e3b;
+      line-height: 1.35;
+    }
+
+    .passion-quote-box strong {
+      color: #047857;
+    }
+
+    /* Section Structure */
+    section.resume-section {
+      margin-bottom: 8px;
+    }
+
+    h2.section-heading {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 2px;
+      margin-bottom: 5px;
+    }
+
+    .summary-text {
+      color: #334155;
+      text-align: justify;
+      line-height: 1.35;
+      font-size: 11px;
+    }
+
+    /* Skills */
+    .skills-block {
+      line-height: 1.35;
+      font-size: 11px;
+    }
+
+    .skill-line {
+      margin-bottom: 2px;
+    }
+
+    .skill-line strong {
+      color: #0f172a;
+      font-size: 11px;
+    }
+
+    .skill-line span {
+      color: #334155;
+    }
+
+    /* Experience & Projects */
+    .item-entry {
+      margin-bottom: 6px;
+    }
+
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5px;
+    }
+
+    .item-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .item-title .company {
+      color: #0284c7;
+      font-weight: 600;
+    }
+
+    .item-meta {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #64748b;
+      white-space: nowrap;
+    }
+
+    .item-meta a {
+      color: #0284c7;
+      text-decoration: none;
+    }
+
+    ul.compact-list {
+      list-style-type: disc;
+      padding-left: 15px;
+      margin-top: 1px;
+    }
+
+    ul.compact-list li {
+      margin-bottom: 1.5px;
+      color: #334155;
+      line-height: 1.32;
+      font-size: 11px;
+    }
+
+    ul.compact-list li strong {
+      color: #0f172a;
+    }
+
+    /* Education */
+    .education-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 11px;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .edu-inst {
+      color: #475569;
+    }
+
+    .edu-cgpa {
+      color: #059669;
+      font-weight: 700;
+    }
+
+    /* Strict Print One-Page */
+    @media print {
+      body {
+        background: #ffffff;
+        font-size: 10.5px;
+        color: #000000;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .resume-sheet {
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+      }
+      a {
+        color: #000000 !important;
+        text-decoration: none !important;
+      }
+      h2.section-heading {
+        border-color: #000000;
+        color: #000000;
+      }
+      .target-role, .item-title .company {
+        color: #000000 !important;
+      }
+      .passion-quote-box {
+        background: #f8fafc;
+        border-color: #334155;
+        color: #0f172a;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Minimal Control Bar -->
+  <div class="top-action-bar no-print">
+    <div class="ats-badge">
+      <span>🎯 1-Page ATS Match Score: 95+</span>
+      <span>• Single Page Optimized</span>
+    </div>
+    <button class="print-btn" onclick="window.print()">
+      <span>🖨️ Print / Save 1-Page PDF</span>
+    </button>
+  </div>
+
+  <main class="resume-sheet">
+    <!-- Header -->
+    <header class="resume-header">
+      <h1 class="applicant-name">Smritilata Sarkar</h1>
+      <div class="target-role">SOFTWARE QA ENGINEER | TEST AUTOMATION &amp; MANUAL QA SPECIALIST</div>
+      <div class="contact-bar">
+        <span>📍 Kolkata, India</span>
+        <span>📞 <a href="tel:+916294410077">+91 6294410077</a></span>
+        <span>📧 <a href="mailto:smritilatasarkar2018@gmail.com">smritilatasarkar2018@gmail.com</a></span>
+        <span>🔗 <a href="https://linkedin.com/in/smritilata-sarkar-a81a4428a" target="_blank">linkedin.com/in/smritilata-sarkar</a></span>
+        <span>📦 <a href="https://github.com/smritilata" target="_blank">github.com/smritilata</a></span>
+        <span>🌐 <a href="https://pokemon-qa-portfolio.vercel.app" target="_blank">pokemon-qa-portfolio.vercel.app</a></span>
+      </div>
+    </header>
+
+    <!-- Genuine QA Passion Callout -->
+    <div class="passion-quote-box">
+      <strong>Core QA Mindset:</strong> Unwavering curiosity and relentless patience are my greatest assets as a QA Engineer. I genuinely love the investigative craft of testing—unraveling complex edge cases, validating AI voice behaviors, and advocating for user delight before code reaches production.
+    </div>
+
+    <!-- Summary -->
+    <section class="resume-section">
+      <h2 class="section-heading">Professional Summary</h2>
+      <p class="summary-text">
+        Detail-oriented <strong>Software QA Engineer</strong> with 6+ months of hands-on experience spanning <strong>Manual Testing</strong>, <strong>Java &amp; Selenium WebDriver Test Automation</strong>, and <strong>AI Voice/LLM Validation</strong>. Experienced across the full <strong>STLC/SDLC</strong> in Agile teams, designing high-coverage test matrices, defect lifecycle tracking in <strong>Jira</strong>, <strong>REST API testing</strong>, and <strong>SQL</strong> backend verification. Passionate about quality engineering, with a proven ability to reduce regression overhead by <strong>40%</strong> via Page Object Model (POM) frameworks.
+      </p>
+    </section>
+
+    <!-- Core Skills -->
+    <section class="resume-section">
+      <h2 class="section-heading">Technical Competencies</h2>
+      <div class="skills-block">
+        <div class="skill-line">
+          <strong>Testing Disciplines:</strong>
+          <span>Manual Testing, Automation Testing, Functional, Regression &amp; Retesting, Smoke &amp; Sanity, Usability, Cross-Browser Compatibility, Mobile &amp; Responsive UI (iOS &amp; Android), Boundary Value Analysis (BVA), Equivalence Partitioning (EP), Black-Box QA.</span>
+        </div>
+        <div class="skill-line">
+          <strong>Test Automation &amp; Java:</strong>
+          <span>Selenium WebDriver (v4), Core Java (OOPs, Collections, Exception Handling), TestNG, Page Object Model (POM), Maven (pom.xml), Dynamic XPath &amp; CSS Locators, Explicit Synchronization, Alerts, Frames, Multi-Window Handling.</span>
+        </div>
+        <div class="skill-line">
+          <strong>AI Voice &amp; LLM Testing:</strong>
+          <span>AI-Powered Voice Assistant Testing, NLU (Natural Language Understanding) Intent Recognition, Entity Extraction, LLM Hallucination &amp; Context Retention Validation, Conversational Fallback Handling.</span>
+        </div>
+        <div class="skill-line">
+          <strong>API, DB &amp; Tools:</strong>
+          <span>Basic API Testing, RESTful APIs, JSON, Postman, SQL Queries, Joins, RDBMS, DDL/DML, Jira (Defect Tracking &amp; Triage), Chrome DevTools, Eclipse IDE, Git, GitHub, Requirements Traceability Matrix (RTM).</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section class="resume-section">
+      <h2 class="section-heading">Work Experience</h2>
+
+      <div class="item-entry">
+        <div class="item-top">
+          <div class="item-title">QA Intern — <span class="company">Mihup AI</span></div>
+          <div class="item-meta">07/2026 – 09/2026 | Kolkata, India</div>
+        </div>
+        <ul class="compact-list">
+          <li>Conducted manual and functional QA for an <strong>AI-powered in-car voice assistant</strong> across complete end-to-end user workflows.</li>
+          <li>Engineered and executed <strong>300+ positive, negative, boundary, and conversational test scenarios</strong> across diverse voice phrasings and noise conditions.</li>
+          <li>Validated <strong>NLU intent recognition</strong>, entity handling, fallback paths, and audited <strong>LLM response accuracy</strong> and multi-turn context retention.</li>
+          <li>Identified, logged, and tracked functional and conversational bugs in <strong>Jira</strong> with reproduction steps; verified fixes through regression testing.</li>
+        </ul>
+      </div>
+
+      <div class="item-entry">
+        <div class="item-top">
+          <div class="item-title">QA Intern — <span class="company">Cycle of Samsara</span></div>
+          <div class="item-meta">02/2026 – 04/2026 | Remote / Kolkata</div>
+        </div>
+        <ul class="compact-list">
+          <li>Automated web authentication scenarios using <strong>Selenium WebDriver</strong> and <strong>Core Java</strong> across Chrome, Firefox, and Edge.</li>
+          <li>Validated login success/error messaging and responsive UI behavior, slashing repetitive manual regression testing efforts by <strong>40%</strong>.</li>
+          <li>Verified backend data accuracy by running SQL queries against database records post-execution.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Key Projects -->
+    <section class="resume-section">
+      <h2 class="section-heading">Key Testing &amp; Automation Projects</h2>
+
+      <div class="item-entry">
+        <div class="item-top">
+          <div class="item-title">Flipkart E-Commerce Test Automation (Selenium 4 &amp; Java POM)</div>
+          <div class="item-meta"><a href="https://github.com/smritilata669/flipkart-selenium-automation" target="_blank">github.com/smritilata669/flipkart-selenium-automation ↗</a></div>
+        </div>
+        <ul class="compact-list">
+          <li>Architected a modular <strong>Page Object Model (POM)</strong> test suite in Java &amp; Selenium 4 for login authentication and OTP flows.</li>
+          <li>Configured <strong>TestNG</strong> test suites with Maven build execution (`pom.xml`), resilient dynamic XPaths, and explicit synchronization waits.</li>
+        </ul>
+      </div>
+
+      <div class="item-entry">
+        <div class="item-top">
+          <div class="item-title">India MART B2B Marketplace Web Application Testing</div>
+          <div class="item-meta"><a href="https://github.com/smritilata/Indiamart-application-testing" target="_blank">github.com/smritilata/Indiamart-application-testing ↗</a></div>
+        </div>
+        <ul class="compact-list">
+          <li>Executed end-to-end functional, boundary, and usability testing covering user registration, search, and inquiry flows with <strong>250+ test cases</strong>.</li>
+          <li>Validated cross-browser responsiveness and logged defects with reproduction steps, severity, and priority in Jira with zero defect leakage.</li>
+        </ul>
+      </div>
+
+      <div class="item-entry">
+        <div class="item-top">
+          <div class="item-title">Shopper Stack E-Commerce &amp; Kuku FM Mobile Audio Testing</div>
+          <div class="item-meta">STLC, Integration QA &amp; Mobile Exploratory</div>
+        </div>
+        <ul class="compact-list">
+          <li>Tested Admin, Merchant, and Customer modules (cart, checkout, payment flows) with RTM alignment; executed mobile exploratory testing on Kuku FM audio app.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="resume-section">
+      <h2 class="section-heading">Education</h2>
+      <div class="education-row">
+        <div>
+          <span class="edu-degree">Bachelor of Technology (B.Tech) — Electronics &amp; Communication Engineering</span>
+          <span class="edu-inst"> | Techno International New Town, Kolkata</span>
+        </div>
+        <div>Grad: 07/2025 | <span class="edu-cgpa">CGPA: 7.77 / 10.0</span></div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
