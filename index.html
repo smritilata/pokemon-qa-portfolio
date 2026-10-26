@@ -3,903 +3,387 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smritilata Sarkar | Software QA Engineer | Poké-Portfolio</title>
+  <title>Smritilata Sarkar — Software QA Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23ef4444'/><path d='M2 50 A48 48 0 0 0 98 50 Z' fill='%23ffffff'/><line x1='2' y1='50' x2='98' y2='50' stroke='%23111827' stroke-width='8'/><circle cx='50' cy='50' r='16' fill='%23ffffff' stroke='%23111827' stroke-width='8'/><circle cx='50' cy='50' r='7' fill='%23ffffff' stroke='%23374151' stroke-width='2'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23ef4444'/><path d='M2 50 A48 48 0 0 0 98 50 Z' fill='%23ffffff'/><line x1='2' y1='50' x2='98' y2='50' stroke='%23111827' stroke-width='8'/><circle cx='50' cy='50' r='16' fill='%23ffffff' stroke='%23111827' stroke-width='8'/><circle cx='50' cy='50' r='7' fill='%23ef4444'/></svg>">
 </head>
-<body class="theme-pokeball">
+<body class="light-mode">
 
-  <!-- Particle and Light Canvas for Release Burst -->
+  <!-- Burst Canvas for Summon Animation -->
   <canvas id="burst-canvas"></canvas>
 
-  <!-- Sound & Quick Controls Bar -->
-  <!-- Minimal Top Bar -->
-  <header class="hud-top-bar">
-    <div class="hud-brand">
-      <span class="pokeball-mini-icon"></span>
-      <span class="hud-title">Smritilata Sarkar</span>
-    </div>
-    <div class="hud-actions">
-      <button id="sound-toggle" class="hud-btn" aria-label="Toggle Sound">
-        <span class="icon">🔊</span>
-        <span class="btn-text">Sound</span>
-      </button>
-
-      <a href="Smritilata_Sarkar_Resume.html" target="_blank" class="hud-btn highlight" style="text-decoration: none;" title="Open 1-Page Resume & Save as PDF">
-        <span class="icon">📄</span>
-        <span class="btn-text">1-Page Resume</span>
+  <!-- ======================================================== -->
+  <!-- MINIMAL TOP NAVIGATION BAR (The Zero Quotient style)       -->
+  <!-- ======================================================== -->
+  <header class="site-header">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">
+        <span class="avatar-dot"></span>
+        <span class="brand-text">Smritilata Sarkar</span>
+        <span class="status-pill">Available for QA roles</span>
       </a>
+
+      <nav class="main-nav">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="Smritilata_Sarkar_Resume.html" target="_blank" class="nav-link resume-pill">
+          <span>📄 1-Page Resume</span>
+        </a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="sound-toggle" class="sound-btn" title="Toggle Sound SFX" aria-label="Toggle Sound">
+          <span class="sfx-icon">🔊</span>
+        </button>
+      </nav>
+
+      <div class="mobile-menu-btn" id="mobile-toggle" aria-label="Toggle Navigation">
+        <span></span><span></span>
+      </div>
     </div>
   </header>
 
-  <!-- ======================================================== -->
-  <!-- HERO / POKÉBALL OPENING STAGE CONTAINER                    -->
-  <!-- ======================================================== -->
-  <section id="summon-stage" class="summon-stage stage-closed">
-    <div class="summon-backdrop">
-      <div class="arena-grid"></div>
-      <div class="energy-vortex"></div>
-    </div>
+  <!-- Mobile Dropdown Navigation -->
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <a href="#about" class="m-link">About</a>
+    <a href="#experience" class="m-link">Experience</a>
+    <a href="#projects" class="m-link">Projects</a>
+    <a href="#skills" class="m-link">Skills</a>
+    <a href="Smritilata_Sarkar_Resume.html" target="_blank" class="m-link highlight">📄 1-Page Resume (PDF)</a>
+    <a href="#contact" class="m-link">Contact</a>
+  </div>
 
-    <!-- Battle Dialogue Box (Retro Pokémon style) -->
-    <div class="battle-dialogue-box" id="battle-dialogue">
-      <div class="trainer-avatar-mini">
-        <span class="mini-sprite">👾</span>
-      </div>
-      <div class="dialogue-content">
-        <p class="dialogue-sender">SYSTEM ALERT:</p>
-        <p class="dialogue-text" id="dialogue-typed-text">
-          A wild QA Champion appeared! Click the Pokéball to release Smritilata Sarkar!
-        </p>
-      </div>
-      <div class="dialogue-action-hint">
-        <span class="blink-indicator">▼</span>
-      </div>
-    </div>
+  <main class="page-container">
 
-    <!-- The 3D Interactive Pokéball Assembly -->
-    <div class="pokeball-assembly-wrapper">
-      <div class="summon-light-pillar" id="light-pillar"></div>
-      
-      <div class="pokeball-3d" id="main-pokeball" role="button" tabindex="0" title="Click to Release QA Engineer!">
-        <!-- Outer Energy Ring Aura -->
-        <div class="pokeball-energy-ring"></div>
-        <div class="pokeball-shockwaves"></div>
+    <!-- ======================================================== -->
+    <!-- HERO SECTION (Minimal Profile + Pokémon Trainer Card)     -->
+    <!-- ======================================================== -->
+    <section class="hero-section" id="about">
+      <div class="hero-grid">
+        
+        <!-- Left Column: Personal Intro & Philosophy -->
+        <div class="hero-intro">
+          <div class="hero-badge">
+            <span class="poke-icon">⚡</span>
+            <span>Software QA Engineer &bull; AI Voice &amp; Automation</span>
+          </div>
 
-        <!-- Upper Hemisphere -->
-        <div class="ball-shell shell-top">
-          <div class="shell-reflection"></div>
-          <div class="shell-stripe"></div>
-        </div>
+          <h1 class="hero-title">
+            Testing software with <span class="text-highlight">curiosity</span> and <span class="text-highlight">patience</span>.
+          </h1>
 
-        <!-- Middle Black Belt & Glowing Core Release Button -->
-        <div class="ball-equator">
-          <div class="equator-band"></div>
-          <div class="center-latch-wrapper">
-            <div class="latch-outer-ring">
-              <div class="latch-button" id="pokeball-button">
-                <div class="button-led"></div>
-                <div class="button-ring-pulse"></div>
+          <p class="hero-bio">
+            Hi, I'm Smritilata! I have 6 months of hands-on software testing experience. My greatest superpowers as a QA are my <strong>natural curiosity</strong> and <strong>patience</strong>. I genuinely love what I do—asking the <em>"what if"</em> questions that uncover hidden edge cases, and patiently tracking down tricky bugs so applications run smoothly for real users.
+          </p>
+
+          <div class="hero-highlights-card">
+            <div class="highlight-item">
+              <span class="h-icon">🎙️</span>
+              <div>
+                <strong>AI Voice &amp; LLM Testing:</strong>
+                <p>Tested in-car AI voice assistants at Mihup AI across speech variations, NLU intents, and LLM responses.</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <span class="h-icon">⚙️</span>
+              <div>
+                <strong>Selenium &amp; Java Automation:</strong>
+                <p>Automated regression suites using Selenium WebDriver, Java POM, and TestNG to reduce manual effort by 40%.</p>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Lower Hemisphere -->
-        <div class="ball-shell shell-bottom">
-          <div class="shell-shadow"></div>
-        </div>
-
-        <!-- Ground Shadow -->
-        <div class="ball-ground-shadow"></div>
-      </div>
-
-      <!-- Release Click CTA -->
-      <div class="release-cta-container" id="release-cta">
-        <button class="throw-ball-btn" id="trigger-summon-btn">
-          <span class="poke-icon">⚡</span>
-          <span>CLICK POKÉBALL TO DEPLOY</span>
-          <span class="shortcut-tag">SPACE / CLICK</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Released Pokémon / QA Trainer Entity (Emerged from the Light Beam) -->
-    <div class="summoned-entity-showcase" id="summoned-entity">
-      <div class="entity-aura-particles"></div>
-      
-      <div class="summoned-card-glow"></div>
-      <div class="qa-trainer-holo-card">
-        <!-- Card Top Bar: Level, Name, Types -->
-        <div class="card-header">
-          <div class="card-identity">
-            <span class="card-sub-type">QA CHAMPION #001</span>
-            <h1 class="card-trainer-name">Smritilata Sarkar</h1>
-            <p class="card-role-title">Software QA Engineer • AI Voice & Automation Specialist</p>
-          </div>
-          <div class="card-level-tag">
-            <span class="lvl-label">LVL</span>
-            <span class="lvl-number">99</span>
+          <div class="hero-cta-group">
+            <a href="Smritilata_Sarkar_Resume.html" target="_blank" class="btn-primary">
+              <span>📄 View 1-Page Resume (PDF)</span>
+            </a>
+            <a href="#contact" class="btn-secondary">
+              <span>✉️ Get in Touch</span>
+            </a>
           </div>
         </div>
 
-        <!-- Visual Entity Showcase: Avatar + Stats HUD -->
-        <div class="card-body">
-          <div class="trainer-visual-box">
-            <div class="hologram-rings"></div>
-            <!-- Custom SVG QA Champion Girl Avatar -->
-            <div class="trainer-avatar-frame">
-              <svg class="trainer-svg-art" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#eff6ff"/>
-                    <stop offset="50%" stop-color="#f0fdf4"/>
-                    <stop offset="100%" stop-color="#fef2f2"/>
-                  </linearGradient>
-                  <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#1f2937"/>
-                    <stop offset="50%" stop-color="#111827"/>
-                    <stop offset="100%" stop-color="#0f172a"/>
-                  </linearGradient>
-                  <linearGradient id="jacketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ef4444"/>
-                    <stop offset="100%" stop-color="#b91c1c"/>
-                  </linearGradient>
-                  <linearGradient id="whiteTrim" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ffffff"/>
-                    <stop offset="100%" stop-color="#f1f5f9"/>
-                  </linearGradient>
-                  <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="4" result="blur"/>
-                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                  </filter>
-                </defs>
-
-                <!-- Circular Backdrop Rings -->
-                <circle cx="140" cy="140" r="130" fill="url(#avatarBg)" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="6 6"/>
-                <circle cx="140" cy="140" r="116" stroke="#f43f5e" stroke-width="1.5" opacity="0.35"/>
-                <circle cx="140" cy="140" r="100" fill="#ffffff" fill-opacity="0.9"/>
-
-                <!-- Back Hair (Long cascading hair behind shoulders) -->
-                <path d="M96 90 C85 130 80 180 92 230 C100 232 110 220 108 190 C106 150 110 120 115 105 Z" fill="url(#hairGrad)"/>
-                <path d="M184 90 C195 130 200 180 188 230 C180 232 170 220 172 190 C174 150 170 120 165 105 Z" fill="url(#hairGrad)"/>
-                <ellipse cx="140" cy="115" rx="52" ry="58" fill="url(#hairGrad)"/>
-
-                <!-- Neck & Shadow -->
-                <path d="M130 140 L130 170 L150 170 L150 140 Z" fill="#fde2d1"/>
-                <path d="M130 142 Q140 150 150 142 L150 150 Q140 156 130 150 Z" fill="#fbcfe8" opacity="0.6"/>
-
-                <!-- Female QA Trainer Jacket / Outfit -->
-                <path d="M90 235 C90 180 110 168 128 165 L140 178 L152 165 C170 168 190 180 190 235 Z" fill="url(#jacketGrad)"/>
-                <!-- Inner White Top with Cyan Trim -->
-                <path d="M124 165 L140 195 L156 165 Z" fill="url(#whiteTrim)"/>
-                <path d="M132 172 L140 190 L148 172 Z" fill="#0284c7"/>
-                <!-- White Jacket Collar Lapels -->
-                <path d="M102 170 Q124 162 138 180 L128 190 Q115 174 98 178 Z" fill="#ffffff"/>
-                <path d="M178 170 Q156 162 142 180 L152 190 Q165 174 182 178 Z" fill="#ffffff"/>
-                <!-- Pokéball Zipper Emblem -->
-                <circle cx="140" cy="198" r="8" fill="#ef4444" stroke="#0f172a" stroke-width="1.5"/>
-                <path d="M132 198 A8 8 0 0 0 148 198 Z" fill="#ffffff"/>
-                <line x1="132" y1="198" x2="148" y2="198" stroke="#0f172a" stroke-width="1.5"/>
-                <circle cx="140" cy="198" r="2.5" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
-
-                <!-- Face -->
-                <ellipse cx="140" cy="115" rx="33" ry="36" fill="#fde2d1"/>
-                <path d="M112 110 C112 135 125 152 140 152 C155 152 168 135 168 110 C168 95 158 84 140 84 C122 84 112 95 112 110 Z" fill="#fde2d1"/>
-
-                <!-- Cheerful Anime Female Eyes with Eyelashes -->
-                <!-- Left Eye -->
-                <ellipse cx="126" cy="118" rx="7" ry="9" fill="#1e293b"/>
-                <ellipse cx="126" cy="119" rx="5" ry="7" fill="#0369a1"/>
-                <ellipse cx="126" cy="121" rx="3.5" ry="4" fill="#0f172a"/>
-                <circle cx="124" cy="115" r="2.5" fill="#ffffff"/>
-                <circle cx="128" cy="122" r="1.2" fill="#ffffff"/>
-                <path d="M117 114 Q126 107 135 113" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M134 112 L137 109" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
-                <path d="M118 104 Q127 99 135 103" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
-
-                <!-- Right Eye -->
-                <ellipse cx="154" cy="118" rx="7" ry="9" fill="#1e293b"/>
-                <ellipse cx="154" cy="119" rx="5" ry="7" fill="#0369a1"/>
-                <ellipse cx="154" cy="121" rx="3.5" ry="4" fill="#0f172a"/>
-                <circle cx="152" cy="115" r="2.5" fill="#ffffff"/>
-                <circle cx="156" cy="122" r="1.2" fill="#ffffff"/>
-                <path d="M145 113 Q154 107 163 114" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M162 112 L165 109" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
-                <path d="M145 103 Q153 99 162 104" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
-
-                <!-- Rosy Blush -->
-                <ellipse cx="118" cy="128" rx="6" ry="3.5" fill="#f43f5e" opacity="0.35"/>
-                <ellipse cx="162" cy="128" rx="6" ry="3.5" fill="#f43f5e" opacity="0.35"/>
-
-                <!-- Dainty Nose & Smile -->
-                <circle cx="140" cy="126" r="1" fill="#ea580c"/>
-                <path d="M134 135 Q140 142 146 135" stroke="#e11d48" stroke-width="2" stroke-linecap="round" fill="#fda4af"/>
-
-                <!-- Front Hair Bangs & Side Strands -->
-                <path d="M106 100 Q120 78 140 78 Q160 78 174 100 Q158 88 140 88 Q122 88 106 100 Z" fill="url(#hairGrad)"/>
-                <path d="M112 92 C116 108 120 114 126 112 C124 102 124 96 122 92 Z" fill="url(#hairGrad)"/>
-                <path d="M125 90 C130 110 135 115 140 112 C138 102 136 94 134 90 Z" fill="url(#hairGrad)"/>
-                <path d="M140 90 C146 112 152 115 156 110 C154 100 150 94 148 90 Z" fill="url(#hairGrad)"/>
-                <path d="M110 96 C105 116 106 142 114 158 C115 140 115 118 118 105 Z" fill="url(#hairGrad)"/>
-                <path d="M170 96 C175 116 174 142 166 158 C165 140 165 118 162 105 Z" fill="url(#hairGrad)"/>
-                <path d="M122 85 Q140 82 158 85" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-
-                <!-- Red Ribbon Hair Clip -->
-                <circle cx="106" cy="94" r="6" fill="#ef4444"/>
-                <circle cx="106" cy="94" r="2.5" fill="#ffffff"/>
-
-                <!-- QA AI Voice Headset with Microphone -->
-                <path d="M107 106 C106 82 120 68 140 68 C160 68 174 82 173 106" stroke="#0284c7" stroke-width="3" stroke-linecap="round" fill="none"/>
-                <rect x="100" y="106" width="10" height="18" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-                <rect x="170" y="106" width="10" height="18" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-                <path d="M104 122 Q112 136 128 136" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round"/>
-                <circle cx="129" cy="136" r="3" fill="#22c55e" filter="url(#glowEffect)"/>
-
-                <!-- Floating Hologram Pokéball & Testing Sparks -->
-                <g filter="url(#glowEffect)">
-                  <circle cx="212" cy="180" r="18" fill="url(#jacketGrad)"/>
-                  <path d="M194 180 A18 18 0 0 0 230 180 Z" fill="#ffffff"/>
-                  <line x1="194" y1="180" x2="230" y2="180" stroke="#0f172a" stroke-width="2.5"/>
-                  <circle cx="212" cy="180" r="6" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
-                  <circle cx="212" cy="180" r="2.5" fill="#0284c7"/>
-                </g>
-
-                <!-- Floating QA Sparkles -->
-                <path d="M64 90 L68 98 L76 102 L68 106 L64 114 L60 106 L52 102 L60 98 Z" fill="#fbbf24"/>
-                <circle cx="78" cy="120" r="2.5" fill="#38bdf8"/>
-                <path d="M218 85 L222 92 L229 95 L222 98 L218 105 L214 98 L207 95 L214 92 Z" fill="#38bdf8"/>
-                <circle cx="204" cy="116" r="2" fill="#fbbf24"/>
-              </svg>
-            </div>
-
-            <!-- Type Element Badges -->
-            <div class="entity-types-bar">
-              <span class="type-badge badge-automation">⚡ AUTOMATION</span>
-              <span class="type-badge badge-manual">🛡️ MANUAL QA</span>
-              <span class="type-badge badge-ai">🤖 AI / LLM TEST</span>
-              <span class="type-badge badge-java">☕ JAVA & SELENIUM</span>
-            </div>
-          </div>
-
-          <!-- Combat / QA Stats Panel -->
-          <div class="trainer-stats-summary">
-            <!-- HP & EXP Bars -->
-            <div class="stat-gauge-group">
-              <div class="gauge-label-row">
-                <span class="gauge-title">DEFECT DETECTION (HP)</span>
-                <span class="gauge-value text-emerald">100 / 100 [MAX]</span>
-              </div>
-              <div class="gauge-track">
-                <div class="gauge-fill fill-hp" style="width: 100%;"></div>
-              </div>
-            </div>
-
-            <div class="stat-gauge-group">
-              <div class="gauge-label-row">
-                <span class="gauge-title">STLC EXP MASTERY</span>
-                <span class="gauge-value text-cyan">9,850 / 10,000 EXP</span>
-              </div>
-              <div class="gauge-track">
-                <div class="gauge-fill fill-exp" style="width: 98%;"></div>
-              </div>
-            </div>
-
-            <!-- Mini Spec Matrix -->
-            <div class="spec-matrix-grid">
-              <div class="spec-item">
-                <span class="spec-label">ABILITY</span>
-                <span class="spec-val">Bug Slayer & Voice NLU</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">ITEM HELD</span>
-                <span class="spec-val">Selenium WebDriver + Jira</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">ACCURACY</span>
-                <span class="spec-val">99.9% Test Precision</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">EDUCATION</span>
-                <span class="spec-val">B.Tech ECE (7.77 CGPA)</span>
-              </div>
-            </div>
-
-            <!-- Quick Action CTA to explore Pokédex -->
-            <div class="card-action-buttons">
-              <a href="#about" class="poke-primary-btn" id="explore-pokedex-btn">
-                <span>📖 OPEN FULL POKÉDEX</span>
-                <span class="btn-arrow">➔</span>
-              </a>
-              <a href="Smritilata_Sarkar_Resume.html" target="_blank" class="poke-primary-btn" style="background: linear-gradient(135deg, #059669, #047857); border-color: #059669;">
-                <span>📄 ATS RESUME (PDF)</span>
-              </a>
-              <a href="#contact" class="poke-secondary-btn">
-                <span>🔴 CATCH FOR YOUR TEAM</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Personal QA Passion Quote -->
-        <div class="card-footer-quote">
-          <p>"My curiosity and patience are my biggest plus points as a QA. I genuinely love what I do—asking 'what if a user tries this?', tracking down hidden bugs, and making sure software works smoothly."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================== -->
-  <!-- MINIMAL NAVIGATION BAR (LESSER NAVIGATION)               -->
-  <!-- ======================================================== -->
-  <nav class="pokedex-nav" id="main-nav">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <span class="ball-spin-icon"></span>
-        <span class="logo-name">Smritilata</span>
-      </div>
-      <ul class="nav-menu">
-        <li><a href="#about" class="nav-link active">About</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="Smritilata_Sarkar_Resume.html" target="_blank" class="nav-link nav-highlight">Resume</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <div class="nav-mobile-toggle" id="mobile-toggle">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ======================================================== -->
-  <!-- SECTION 1: ABOUT ME & QA PASSION                          -->
-  <!-- ======================================================== -->
-  <main class="portfolio-content-body">
-    <section id="about" class="content-section">
-      <div class="section-badge-header">
-        <h2 class="section-title">About Me</h2>
-        <div class="section-underline"></div>
-        <p class="section-subtext">Why I love testing, how I approach quality, and my hands-on QA experience.</p>
-      </div>
-
-      <div class="dossier-layout">
-        <div class="dossier-main-card">
-          <div class="dossier-header-bar">
-            <span class="status-indicator"></span>
-            <span class="status-text">STATUS: READY TO JOIN YOUR QA SQUAD</span>
-            <span class="location-tag">📍 Kolkata, India</span>
-          </div>
-
-          <div class="dossier-body">
-            <h3 class="dossier-greeting">Hi, I'm Smritilata! Software QA Engineer</h3>
+        <!-- Right Column: Interactive Pokémon Trainer Card -->
+        <div class="hero-card-col">
+          <div class="pokemon-trainer-card" id="trainer-card">
             
-            <!-- Genuine Passion & Superpower Box -->
-            <div style="background: #f0fdf4; border-left: 4px solid #10b981; padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 1.25rem;">
-              <p style="color: #064e3b; font-size: 1rem; line-height: 1.5; margin: 0;">
-                <strong style="color: #047857; font-size: 1.05rem;">💡 My Superpowers: Curiosity &amp; Patience</strong><br>
-                I genuinely love software testing. For me, QA isn't just checking off a list—it's following my natural curiosity. I love asking <em>"what happens if a user clicks this twice, enters unexpected input, or speaks with noisy background?"</em>. My patience allows me to test thoroughly and track down tricky, hidden bugs so the application works smoothly for real people.
-              </p>
-            </div>
-
-            <p class="dossier-bio">
-              I have <strong>6 months of hands-on testing experience</strong> across manual testing and test automation. I write clear test cases, test positive and negative scenarios, and report defects with easy-to-follow steps in Jira.
-            </p>
-            <p class="dossier-bio">
-              I also tested an <strong>AI voice assistant at Mihup AI</strong>—making sure voice commands, user intents, and AI responses were accurate. For web automation, I write clean <strong>Selenium WebDriver</strong> scripts in <strong>Java</strong> to make repetitive tests fast and reliable.
-            </p>
-
-            <!-- Quick Metric Counters -->
-            <div class="dossier-stats-grid">
-              <div class="metric-box">
-                <span class="metric-num">6+</span>
-                <span class="metric-label">Months Hands-On QA</span>
+            <!-- Card Header -->
+            <div class="pcard-header">
+              <div class="pcard-identity">
+                <span class="pcard-tag">QA TRAINER #001</span>
+                <h3 class="pcard-name">Smritilata Sarkar</h3>
+                <span class="pcard-subtitle">Bug Hunter &amp; Automation QA</span>
               </div>
-              <div class="metric-box">
-                <span class="metric-num">500+</span>
-                <span class="metric-label">Test Scenarios Executed</span>
-              </div>
-              <div class="metric-box">
-                <span class="metric-num">100%</span>
-                <span class="metric-label">Defect Lifecycle Traceability</span>
-              </div>
-              <div class="metric-box">
-                <span class="metric-num">4+</span>
-                <span class="metric-label">Key Applications Tested</span>
+              <div class="pcard-level">
+                <span class="lvl-label">LVL</span>
+                <span class="lvl-val">99</span>
               </div>
             </div>
+
+            <!-- Avatar Frame -->
+            <div class="pcard-avatar-box">
+              <div class="avatar-ring">
+                <!-- Custom Female QA Trainer Vector Avatar -->
+                <svg class="trainer-avatar-svg" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#f0f9ff"/>
+                      <stop offset="100%" stop-color="#e0f2fe"/>
+                    </linearGradient>
+                    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#1f2937"/>
+                      <stop offset="100%" stop-color="#0f172a"/>
+                    </linearGradient>
+                    <linearGradient id="jacketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#ef4444"/>
+                      <stop offset="100%" stop-color="#dc2626"/>
+                    </linearGradient>
+                  </defs>
+
+                  <circle cx="140" cy="140" r="130" fill="url(#avatarBg)" stroke="#bae6fd" stroke-width="3"/>
+                  <circle cx="140" cy="140" r="115" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.4"/>
+
+                  <!-- Long Flowing Hair Behind -->
+                  <path d="M96 90 C85 130 80 180 92 230 C100 232 110 220 108 190 C106 150 110 120 115 105 Z" fill="url(#hairGrad)"/>
+                  <path d="M184 90 C195 130 200 180 188 230 C180 232 170 220 172 190 C174 150 170 120 165 105 Z" fill="url(#hairGrad)"/>
+                  <ellipse cx="140" cy="115" rx="52" ry="58" fill="url(#hairGrad)"/>
+
+                  <!-- Neck -->
+                  <path d="M130 140 L130 170 L150 170 L150 140 Z" fill="#fde2d1"/>
+
+                  <!-- Female Trainer Jacket -->
+                  <path d="M90 235 C90 180 110 168 128 165 L140 178 L152 165 C170 168 190 180 190 235 Z" fill="url(#jacketGrad)"/>
+                  <path d="M124 165 L140 195 L156 165 Z" fill="#ffffff"/>
+                  <path d="M132 172 L140 190 L148 172 Z" fill="#0284c7"/>
+                  <path d="M102 170 Q124 162 138 180 L128 190 Q115 174 98 178 Z" fill="#ffffff"/>
+                  <path d="M178 170 Q156 162 142 180 L152 190 Q165 174 182 178 Z" fill="#ffffff"/>
+
+                  <!-- Face & Features -->
+                  <ellipse cx="140" cy="115" rx="33" ry="36" fill="#fde2d1"/>
+                  <ellipse cx="126" cy="118" rx="7" ry="9" fill="#1e293b"/>
+                  <ellipse cx="126" cy="119" rx="5" ry="7" fill="#0369a1"/>
+                  <circle cx="124" cy="115" r="2.5" fill="#ffffff"/>
+                  <path d="M117 114 Q126 107 135 113" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+                  <ellipse cx="154" cy="118" rx="7" ry="9" fill="#1e293b"/>
+                  <ellipse cx="154" cy="119" rx="5" ry="7" fill="#0369a1"/>
+                  <circle cx="152" cy="115" r="2.5" fill="#ffffff"/>
+                  <path d="M145 113 Q154 107 163 114" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+                  
+                  <!-- Cute Rosy Blush & Smile -->
+                  <ellipse cx="118" cy="128" rx="6" ry="3.5" fill="#f43f5e" opacity="0.4"/>
+                  <ellipse cx="162" cy="128" rx="6" ry="3.5" fill="#f43f5e" opacity="0.4"/>
+                  <path d="M134 135 Q140 142 146 135" stroke="#e11d48" stroke-width="2" stroke-linecap="round" fill="#fda4af"/>
+
+                  <!-- Front Bangs & Side Tendrils -->
+                  <path d="M106 100 Q120 78 140 78 Q160 78 174 100 Q158 88 140 88 Q122 88 106 100 Z" fill="url(#hairGrad)"/>
+                  <path d="M112 92 C116 108 120 114 126 112 C124 102 124 96 122 92 Z" fill="url(#hairGrad)"/>
+                  <path d="M125 90 C130 110 135 115 140 112 C138 102 136 94 134 90 Z" fill="url(#hairGrad)"/>
+                  <path d="M110 96 C105 116 106 142 114 158 C115 140 115 118 118 105 Z" fill="url(#hairGrad)"/>
+                  <path d="M170 96 C175 116 174 142 166 158 C165 140 165 118 162 105 Z" fill="url(#hairGrad)"/>
+                  <circle cx="106" cy="94" r="6" fill="#ef4444"/>
+
+                  <!-- QA Headset & Mic (AI Voice QA) -->
+                  <path d="M107 106 C106 82 120 68 140 68 C160 68 174 82 173 106" stroke="#0284c7" stroke-width="3" stroke-linecap="round" fill="none"/>
+                  <rect x="100" y="106" width="10" height="18" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+                  <rect x="170" y="106" width="10" height="18" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+                  <path d="M104 122 Q112 136 128 136" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <circle cx="129" cy="136" r="3" fill="#22c55e"/>
+
+                  <!-- Floating Mini Pokéball -->
+                  <circle cx="212" cy="180" r="16" fill="url(#jacketGrad)"/>
+                  <path d="M196 180 A16 16 0 0 0 228 180 Z" fill="#ffffff"/>
+                  <line x1="196" y1="180" x2="228" y2="180" stroke="#0f172a" stroke-width="2"/>
+                  <circle cx="212" cy="180" r="5" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+                </svg>
+              </div>
+
+              <div class="pcard-types">
+                <span class="type-pill pill-auto">⚡ Automation</span>
+                <span class="type-pill pill-manual">🛡️ Manual QA</span>
+                <span class="type-pill pill-ai">🤖 AI Voice QA</span>
+              </div>
+            </div>
+
+            <!-- Card Stats & Ability -->
+            <div class="pcard-footer">
+              <div class="pcard-stat-line">
+                <span class="stat-lbl">DEFECT DETECTION</span>
+                <div class="stat-bar"><div class="stat-fill" style="width: 100%;"></div></div>
+                <span class="stat-val">100%</span>
+              </div>
+              <div class="pcard-traits">
+                <div class="trait-item">
+                  <span class="t-lbl">CORE TRAIT:</span>
+                  <span class="t-val">Curiosity &amp; Patience</span>
+                </div>
+                <div class="trait-item">
+                  <span class="t-lbl">DEGREE:</span>
+                  <span class="t-val">B.Tech ECE (7.77 CGPA)</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <!-- Sidebar Card: Quick Contact & Trainer Stats -->
-        <aside class="dossier-sidebar">
-          <div class="pokedex-data-module">
-            <div class="module-title">QUICK COMMUNICATIONS</div>
-            <ul class="dossier-contact-list">
-              <li>
-                <span class="c-label">EMAIL:</span>
-                <a href="mailto:smritilatasarkar2018@gmail.com" class="c-link">smritilatasarkar2018@gmail.com</a>
-              </li>
-              <li>
-                <span class="c-label">PHONE:</span>
-                <a href="tel:+916294410077" class="c-link">+91 6294410077</a>
-              </li>
-              <li>
-                <span class="c-label">LINKEDIN:</span>
-                <a href="https://linkedin.com/in/smritilata-sarkar-a81a4428a" target="_blank" rel="noopener noreferrer" class="c-link">linkedin.com/in/smritilata-sarkar</a>
-              </li>
-              <li>
-                <span class="c-label">GITHUB REPOS:</span>
-                <a href="https://github.com/smritilata/Indiamart-application-testing" target="_blank" rel="noopener noreferrer" class="c-link">Indiamart Testing Repo</a> • 
-                <a href="https://github.com/smritilata669/flipkart-selenium-automation" target="_blank" rel="noopener noreferrer" class="c-link">Flipkart Automation Repo</a>
-              </li>
-              <li>
-                <span class="c-label">CORE ROLES:</span>
-                <span class="c-value">Manual QA • Automation • AI Voice QA</span>
-              </li>
-            </ul>
-
-            <div class="action-btn-stack">
-              <a href="Smritilata_Sarkar_Resume.html" target="_blank" class="pokedex-btn-red" style="background: linear-gradient(135deg, #059669, #047857);">
-                <span>📄 VIEW / PRINT ATS RESUME (PDF)</span>
-              </a>
-              <a href="mailto:smritilatasarkar2018@gmail.com" class="pokedex-btn-red">
-                <span>✉️ SEND DIRECT TRANSMISSION</span>
-              </a>
-              <a href="https://linkedin.com/in/smritilata-sarkar-a81a4428a" target="_blank" rel="noopener noreferrer" class="pokedex-btn-blue">
-                <span>🔗 CONNECT ON LINKEDIN</span>
-              </a>
-            </div>
-          </div>
-        </aside>
       </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- SECTION 2: EXPERIENCE / BATTLE LOG                        -->
+    <!-- EXPERIENCE SECTION (The Zero Quotient Chronological)      -->
     <!-- ======================================================== -->
-    <section id="experience" class="content-section">
-      <div class="section-badge-header">
-        <h2 class="section-title">Work Experience</h2>
-        <div class="section-underline"></div>
-        <p class="section-subtext">Where I tested real software, automated test cases, and helped ship reliable releases.</p>
+    <section class="content-block" id="experience">
+      <div class="block-header">
+        <h2 class="block-title">Work Experience</h2>
+        <p class="block-desc">Real-world software testing, voice assistant verification, and automation suites.</p>
       </div>
 
-      <div class="timeline-container">
+      <div class="experience-list">
         
         <!-- Experience 1: Mihup AI -->
-        <article class="timeline-card active-quest">
-          <div class="timeline-connector">
-            <div class="pokeball-milestone"></div>
-          </div>
-          <div class="timeline-content">
-            <div class="exp-header">
-              <div class="exp-title-block">
-                <span class="company-badge ai-badge">AI &amp; VOICE QA</span>
-                <h3 class="role-name">QA Intern</h3>
-                <h4 class="company-name">Mihup AI</h4>
-              </div>
-              <div class="exp-meta">
-                <span class="exp-duration">07/2026 – 09/2026</span>
-                <span class="exp-location">📍 Kolkata, India</span>
-              </div>
+        <div class="exp-card">
+          <div class="exp-card-header">
+            <div>
+              <h3 class="exp-role">QA Intern</h3>
+              <span class="exp-company">Mihup AI</span>
+              <span class="exp-badge">AI Voice Lab</span>
             </div>
-
-            <div class="exp-description">
-              <p class="exp-summary-tag">
-                What I did: Tested an AI in-car voice assistant, checking voice commands, user intents, and AI responses.
-              </p>
-              <ul class="battle-achievements">
-                <li>
-                  <span class="bullet-gem">💎</span>
-                  <span><strong>AI Voice Testing:</strong> Tested voice assistant features from start to finish across normal driving workflows.</span>
-                </li>
-                <li>
-                  <span class="bullet-gem">💎</span>
-                  <span><strong>Testing Edge Cases:</strong> Created and ran test cases for voice commands, checking different wordings, accents, and fallback behavior.</span>
-                </li>
-                <li>
-                  <span class="bullet-gem">💎</span>
-                  <span><strong>Intent &amp; LLM Checks:</strong> Validated that user intent was recognized accurately and that LLM answers were relevant and polite.</span>
-                </li>
-                <li>
-                  <span class="bullet-gem">💎</span>
-                  <span><strong>Clear Bug Reports:</strong> Logged defects in Jira with exact reproduction steps, screenshots, and priority levels.</span>
-                </li>
-                <li>
-                  <span class="bullet-gem">💎</span>
-                  <span><strong>Retesting &amp; Regression:</strong> Re-tested resolved bugs with developers to confirm the fixes worked without breaking other features.</span>
-                </li>
-              </ul>
-              <div class="tech-tag-row">
-                <span class="tech-pill">Voice Assistant QA</span>
-                <span class="tech-pill">Intent Testing</span>
-                <span class="tech-pill">LLM Validation</span>
-                <span class="tech-pill">Jira</span>
-                <span class="tech-pill">Regression Testing</span>
-              </div>
+            <div class="exp-period">
+              <span>07/2026 – 09/2026</span>
+              <span class="exp-city">📍 Kolkata, India</span>
             </div>
           </div>
-        </article>
+          <p class="exp-intro">
+            Tested an AI-powered in-car voice assistant across voice commands, user intents, and real-time response accuracy.
+          </p>
+          <ul class="exp-bullets">
+            <li>Tested end-to-end user workflows for voice commands, speech variations, and background road noise.</li>
+            <li>Created and ran positive, negative, boundary, and edge-case test scenarios for conversational voice flows.</li>
+            <li>Validated Natural Language Understanding (NLU) intent recognition, entity extraction, and fallback dialogs.</li>
+            <li>Audited LLM-generated responses for factual accuracy, relevance, and multi-turn context retention.</li>
+            <li>Documented and tracked defects in Jira with clear reproduction steps, logs, expected vs. actual outcomes, and priority.</li>
+            <li>Collaborated with developers to reproduce, verify, and retest bugs through regression cycles.</li>
+          </ul>
+        </div>
 
         <!-- Experience 2: Cycle of Samsara -->
-        <article class="timeline-card">
-          <div class="timeline-connector">
-            <div class="pokeball-milestone"></div>
-          </div>
-          <div class="timeline-content">
-            <div class="exp-header">
-              <div class="exp-title-block">
-                <span class="company-badge auto-badge">TEST AUTOMATION</span>
-                <h3 class="role-name">QA Intern</h3>
-                <h4 class="company-name">Cycle of Samsara</h4>
-              </div>
-              <div class="exp-meta">
-                <span class="exp-duration">02/2026 – 04/2026</span>
-                <span class="exp-location">📍 Kolkata, India</span>
-              </div>
+        <div class="exp-card">
+          <div class="exp-card-header">
+            <div>
+              <h3 class="exp-role">QA Intern</h3>
+              <span class="exp-company">Cycle of Samsara</span>
+              <span class="exp-badge">Test Automation</span>
             </div>
-
-            <div class="exp-description">
-              <p class="exp-summary-tag">
-                What I did: Built Selenium test automation scripts using Java for login scenarios and browser checks.
-              </p>
-              <ul class="battle-achievements">
-                <li>
-                  <span class="bullet-gem">💎</span>
-                  <span><strong>Selenium Scripts in Java:</strong> Wrote automated tests for valid and invalid login scenarios using Selenium WebDriver.</span>
-                </li>
-                <li>
-                  <span class="bullet-gem">💎</span>
-                  <span><strong>Cross-Browser Testing:</strong> Verified that login and error messages display correctly on Chrome, Firefox, and Edge.</span>
-                </li>
-                <li>
-                  <span class="bullet-gem">💎</span>
-                  <span><strong>Time Savings:</strong> Cut down repetitive manual testing efforts by 40% through reusable automation scripts.</span>
-                </li>
-              </ul>
-              <div class="tech-tag-row">
-                <span class="tech-pill">Selenium WebDriver</span>
-                <span class="tech-pill">Java</span>
-                <span class="tech-pill">TestNG</span>
-                <span class="tech-pill">Cross-Browser</span>
-              </div>
+            <div class="exp-period">
+              <span>02/2026 – 04/2026</span>
+              <span class="exp-city">📍 Test Automation Lab</span>
             </div>
           </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- SECTION 3: SKILLS                                         -->
-    <!-- ======================================================== -->
-    <section id="skills" class="content-section">
-      <div class="section-badge-header">
-        <h2 class="section-title">Skills &amp; Tools</h2>
-        <div class="section-underline"></div>
-        <p class="section-subtext">The testing methods, automation tools, and technologies I work with.</p>
-      </div>
-
-      <!-- Skill Filter Pills -->
-      <div class="skill-category-filters" id="skill-filters">
-        <button class="filter-btn active" data-filter="all">ALL SKILLS</button>
-        <button class="filter-btn" data-filter="testing-types">TESTING TYPES</button>
-        <button class="filter-btn" data-filter="selenium-java">SELENIUM &amp; JAVA</button>
-        <button class="filter-btn" data-filter="process">SDLC &amp; STLC</button>
-        <button class="filter-btn" data-filter="api-db">API &amp; DATABASE</button>
-        <button class="filter-btn" data-filter="tools">TOOLS</button>
-      </div>
-
-      <div class="skills-grid" id="skills-collection">
-
-        <!-- Category: Testing Types -->
-        <div class="skill-card" data-category="testing-types">
-          <div class="skill-badge-icon badge-red">🛡️</div>
-          <div class="skill-card-info">
-            <span class="skill-cat-label">TESTING TYPES</span>
-            <h4 class="skill-name">Functional &amp; Manual QA</h4>
-            <div class="skill-tags">
-              <span>Manual Testing</span>
-              <span>Functional Testing</span>
-              <span>Smoke &amp; Sanity</span>
-              <span>Regression &amp; Retesting</span>
-            </div>
-            <div class="skill-bar-shell">
-              <div class="skill-bar-fill" style="width: 95%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-card" data-category="testing-types">
-          <div class="skill-badge-icon badge-orange">📱</div>
-          <div class="skill-card-info">
-            <span class="skill-cat-label">TESTING TYPES</span>
-            <h4 class="skill-name">UI, Responsive &amp; Mobile QA</h4>
-            <div class="skill-tags">
-              <span>Cross-Browser Testing</span>
-              <span>Exploratory Testing</span>
-              <span>Usability Testing</span>
-              <span>iOS &amp; Android Mobile Apps</span>
-              <span>UI Testing</span>
-            </div>
-            <div class="skill-bar-shell">
-              <div class="skill-bar-fill" style="width: 92%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Category: Selenium & Automation -->
-        <div class="skill-card" data-category="selenium-java">
-          <div class="skill-badge-icon badge-blue">⚙️</div>
-          <div class="skill-card-info">
-            <span class="skill-cat-label">SELENIUM &amp; JAVA</span>
-            <h4 class="skill-name">Selenium WebDriver Frameworks</h4>
-            <div class="skill-tags">
-              <span>Selenium Architecture</span>
-              <span>Java Selenium Architecture</span>
-              <span>Locators (XPath, CSS)</span>
-              <span>Dropdown &amp; Mouse Actions</span>
-              <span>Synchronization / Waits</span>
-              <span>TestNG</span>
-              <span>Alerts &amp; Frames Handling</span>
-              <span>Multi-Window Handling</span>
-            </div>
-            <div class="skill-bar-shell">
-              <div class="skill-bar-fill" style="width: 90%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Category: Core Java -->
-        <div class="skill-card" data-category="selenium-java">
-          <div class="skill-badge-icon badge-yellow">☕</div>
-          <div class="skill-card-info">
-            <span class="skill-cat-label">SELENIUM &amp; JAVA</span>
-            <h4 class="skill-name">Core Java Programming</h4>
-            <div class="skill-tags">
-              <span>OOPs Concepts</span>
-              <span>Classes &amp; Objects</span>
-              <span>Inheritance</span>
-              <span>Polymorphism</span>
-              <span>Abstraction</span>
-              <span>Interfaces</span>
-              <span>Exception Handling</span>
-              <span>Collections Framework</span>
-            </div>
-            <div class="skill-bar-shell">
-              <div class="skill-bar-fill" style="width: 88%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Category: Process & Methodologies -->
-        <div class="skill-card" data-category="process">
-          <div class="skill-badge-icon badge-green">📋</div>
-          <div class="skill-card-info">
-            <span class="skill-cat-label">SDLC &amp; METHODOLOGY</span>
-            <h4 class="skill-name">STLC &amp; Agile Process</h4>
-            <div class="skill-tags">
-              <span>SDLC &amp; STLC Lifecycle</span>
-              <span>Agile Scrum Methodology</span>
-              <span>Test Case Design</span>
-              <span>Test Scenario Mapping</span>
-              <span>Test Execution</span>
-              <span>Defect Reporting &amp; Triage</span>
-              <span>RTM (Traceability Matrix)</span>
-            </div>
-            <div class="skill-bar-shell">
-              <div class="skill-bar-fill" style="width: 96%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Category: API & Database -->
-        <div class="skill-card" data-category="api-db">
-          <div class="skill-badge-icon badge-cyan">🗄️</div>
-          <div class="skill-card-info">
-            <span class="skill-cat-label">API &amp; DATABASE</span>
-            <h4 class="skill-name">Database (SQL) &amp; API Testing</h4>
-            <div class="skill-tags">
-              <span>RDBMS Concepts</span>
-              <span>SQL Queries &amp; Functions</span>
-              <span>Inner / Outer Joins</span>
-              <span>DML, DDL, TCL, DCL</span>
-              <span>Basic API Testing</span>
-            </div>
-            <div class="skill-bar-shell">
-              <div class="skill-bar-fill" style="width: 85%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Category: Tools -->
-        <div class="skill-card" data-category="tools">
-          <div class="skill-badge-icon badge-purple">🛠️</div>
-          <div class="skill-card-info">
-            <span class="skill-cat-label">TOOLS &amp; UTILITIES</span>
-            <h4 class="skill-name">QA Toolbelt &amp; IDEs</h4>
-            <div class="skill-tags">
-              <span>Jira (Defect Tracking)</span>
-              <span>Chrome DevTools (Inspect, Network, Console)</span>
-              <span>Eclipse IDE</span>
-              <span>TestNG</span>
-              <span>Selenium WebDriver</span>
-            </div>
-            <div class="skill-bar-shell">
-              <div class="skill-bar-fill" style="width: 94%;"></div>
-            </div>
-          </div>
+          <p class="exp-intro">
+            Built Selenium WebDriver automated test scripts using Java to automate regression and authentication testing.
+          </p>
+          <ul class="exp-bullets">
+            <li>Developed Selenium WebDriver automation scripts using Java for valid and invalid login scenarios.</li>
+            <li>Validated login success, error messaging, and responsive UI behavior across Chrome, Firefox, and Edge browsers.</li>
+            <li>Reduced repetitive manual testing efforts by 40% through reusable test automation routines.</li>
+            <li>Verified backend database consistency by running validation SQL queries post-test.</li>
+          </ul>
         </div>
 
       </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- SECTION 4: PROJECTS                                       -->
+    <!-- PROJECTS SECTION (Featured with GitHub Repos)             -->
     <!-- ======================================================== -->
-    <section id="projects" class="content-section">
-      <div class="section-badge-header">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="section-underline"></div>
-        <p class="section-subtext">Real projects I tested and automated, with code links on GitHub.</p>
+    <section class="content-block" id="projects">
+      <div class="block-header">
+        <h2 class="block-title">Featured Projects</h2>
+        <p class="block-desc">Open-source testing repositories, automation frameworks, and exploratory testing campaigns.</p>
       </div>
 
       <div class="projects-grid">
         
         <!-- Project 1: India MART -->
-        <div class="project-quest-card">
-          <div class="quest-card-top">
-            <span class="quest-category">WEB APPLICATION TESTING</span>
-            <span class="quest-status status-cleared">COMPLETED ✓</span>
+        <div class="project-box">
+          <div class="proj-top">
+            <span class="proj-badge">Web Application QA</span>
+            <span class="proj-status">Completed ✓</span>
           </div>
-          <h3 class="quest-title">India MART Web Application Testing</h3>
-          <p class="quest-description">
-            Comprehensive end-to-end testing of India MART's large-scale B2B web application. Validated critical user inquiry funnels, product listings, merchant communications, and cross-browser responsiveness.
+          <h3 class="proj-title">India MART Web Application Testing</h3>
+          <p class="proj-desc">
+            End-to-end manual, boundary, and responsive testing for India MART's B2B marketplace. Tested user registration, product search, form validation, and merchant inquiries.
           </p>
-          <div class="quest-highlights">
-            <div class="highlight-item">
-              <strong>Scope:</strong> Registration, login, product search, inquiry flow, form validation, navigation &amp; responsive UI.
-            </div>
-            <div class="highlight-item">
-              <strong>Execution:</strong> Designed positive, negative, boundary, and usability test cases; logged defects with reproduction steps, severity, and priority.
-            </div>
-            <div class="highlight-item">
-              <strong>Verification:</strong> Conducted regression and exploratory testing across multiple browser viewports.
-            </div>
-          </div>
-          <div class="quest-tags">
-            <span>Functional Testing</span>
+          <div class="proj-tags">
+            <span>Manual Testing</span>
             <span>Boundary Analysis</span>
-            <span>Defect Reporting</span>
             <span>Cross-Browser</span>
+            <span>Jira</span>
           </div>
-          <a href="https://github.com/smritilata/Indiamart-application-testing" target="_blank" rel="noopener noreferrer" class="quest-repo-btn">
-            <span class="gh-icon">📦</span>
-            <span>View Repository: smritilata/Indiamart-application-testing</span>
-            <span class="ext-arrow">↗</span>
+          <a href="https://github.com/smritilata/Indiamart-application-testing" target="_blank" rel="noopener noreferrer" class="repo-link-btn">
+            <span>📦 github.com/smritilata/Indiamart-application-testing</span>
+            <span class="arr">↗</span>
           </a>
         </div>
 
-        <!-- Project 2: Flipkart Login Automation -->
-        <div class="project-quest-card">
-          <div class="quest-card-top">
-            <span class="quest-category">E-COMMERCE AUTOMATION FRAMEWORK</span>
-            <span class="quest-status status-cleared">COMPLETED ✓</span>
+        <!-- Project 2: Flipkart Automation -->
+        <div class="project-box">
+          <div class="proj-top">
+            <span class="proj-badge">Selenium Automation</span>
+            <span class="proj-status">Completed ✓</span>
           </div>
-          <h3 class="quest-title">Flipkart Automation (Selenium 4 &amp; Java POM)</h3>
-          <p class="quest-description">
-            Production-grade test automation suite for Flipkart authentication built with Java, Selenium WebDriver 4, TestNG, and Page Object Model (POM) architecture with resilient locators and synchronized waits.
+          <h3 class="proj-title">Flipkart Login Automation (Selenium 4 &amp; Java POM)</h3>
+          <p class="proj-desc">
+            Production-grade test automation suite for Flipkart authentication built with Java, Selenium WebDriver 4, TestNG, and Page Object Model (POM) architecture.
           </p>
-          <div class="quest-highlights">
-            <div class="highlight-item">
-              <strong>Architecture:</strong> Page Object Model (POM) design pattern with clean separation of locators and test assertions.
-            </div>
-            <div class="highlight-item">
-              <strong>Scenarios:</strong> Automated positive, negative, boundary, and OTP validation test cases for Flipkart login flow.
-            </div>
-            <div class="highlight-item">
-              <strong>Framework:</strong> TestNG automated execution with Maven build configuration and cross-browser management.
-            </div>
-          </div>
-          <div class="quest-tags">
+          <div class="proj-tags">
             <span>Selenium WebDriver 4</span>
             <span>Java POM</span>
             <span>TestNG</span>
             <span>Maven</span>
-            <span>Cross-Browser</span>
           </div>
-          <a href="https://github.com/smritilata669/flipkart-selenium-automation" target="_blank" rel="noopener noreferrer" class="quest-repo-btn">
-            <span class="gh-icon">📦</span>
-            <span>View Repository: smritilata669/flipkart-selenium-automation</span>
-            <span class="ext-arrow">↗</span>
+          <a href="https://github.com/smritilata669/flipkart-selenium-automation" target="_blank" rel="noopener noreferrer" class="repo-link-btn">
+            <span>📦 github.com/smritilata669/flipkart-selenium-automation</span>
+            <span class="arr">↗</span>
           </a>
         </div>
 
-        <!-- Project 2: Shopper Stack E-commerce Testing -->
-        <div class="project-quest-card">
-          <div class="quest-card-top">
-            <span class="quest-category">E-COMMERCE SYSTEM</span>
-            <span class="quest-status status-cleared">COMPLETED ✓</span>
+        <!-- Project 3: Shopper Stack -->
+        <div class="project-box">
+          <div class="proj-top">
+            <span class="proj-badge">E-Commerce System</span>
+            <span class="proj-status">Completed ✓</span>
           </div>
-          <h3 class="quest-title">Shopper Stack E-commerce Testing</h3>
-          <p class="quest-description">
-            Full-spectrum multi-module testing for a comprehensive e-commerce platform encompassing Admin management, Merchant portals, and Customer storefronts.
+          <h3 class="proj-title">Shopper Stack E-Commerce Testing</h3>
+          <p class="proj-desc">
+            Tested Admin, Merchant, and Customer modules including product management, cart checkout, payment workflows, and order tracking aligned with the Requirements Traceability Matrix (RTM).
           </p>
-          <div class="quest-highlights">
-            <div class="highlight-item">
-              <strong>Modules:</strong> Admin, Merchant, and Customer modules including product catalog, user management, shopping cart, payment gateway workflow, and real-time order tracking.
-            </div>
-            <div class="highlight-item">
-              <strong>Execution:</strong> Executed functional, integration, regression, and exploratory testing scenarios.
-            </div>
-            <div class="highlight-item">
-              <strong>Deliverables:</strong> Prepared comprehensive test scenario documentation, test execution runs, and defect reports.
-            </div>
-          </div>
-          <div class="quest-tags">
-            <span>Integration Testing</span>
-            <span>E-Commerce Flow</span>
-            <span>Payment &amp; Cart</span>
-            <span>Regression Suite</span>
+          <div class="proj-tags">
+            <span>Integration QA</span>
+            <span>Payment Flows</span>
+            <span>RTM</span>
+            <span>Defect Reporting</span>
           </div>
         </div>
 
-        <!-- Project 3: Exploratory Testing on Kuku FM -->
-        <div class="project-quest-card">
-          <div class="quest-card-top">
-            <span class="quest-category">MOBILE AUDIO APP</span>
-            <span class="quest-status status-cleared">COMPLETED ✓</span>
+        <!-- Project 4: Kuku FM -->
+        <div class="project-box">
+          <div class="proj-top">
+            <span class="proj-badge">Mobile Audio App</span>
+            <span class="proj-status">Completed ✓</span>
           </div>
-          <h3 class="quest-title">Exploratory Testing on Kuku FM</h3>
-          <p class="quest-description">
-            Focused exploratory mobile application testing for Kuku FM, a leading audio story and podcast streaming platform.
+          <h3 class="proj-title">Exploratory Testing on Kuku FM</h3>
+          <p class="proj-desc">
+            Conducted exploratory mobile testing on Kuku FM audio story app. Tested background media playback, playlist sync, and offline downloads, logging defects in DTT.
           </p>
-          <div class="quest-highlights">
-            <div class="highlight-item">
-              <strong>Scope:</strong> Audio player responsiveness, background playback, playlist queueing, offline downloads, and user account transitions.
-            </div>
-            <div class="highlight-item">
-              <strong>Defect Tracking:</strong> Uncovered edge-case usability and functional defects and logged detailed bug reports in the DTT (Defect Tracking Tool).
-            </div>
-            <div class="highlight-item">
-              <strong>Impact:</strong> Pinpointed playback synchronization and UI glitches to bolster user retention.
-            </div>
-          </div>
-          <div class="quest-tags">
-            <span>Mobile Exploratory QA</span>
-            <span>DTT Defect Tool</span>
-            <span>Media Playback</span>
-            <span>Usability Audit</span>
-          </div>
-        </div>
-
-        <!-- Project 4: Login Page Automation using Selenium WebDriver -->
-        <div class="project-quest-card">
-          <div class="quest-card-top">
-            <span class="quest-category">TEST AUTOMATION FRAMEWORK</span>
-            <span class="quest-status status-cleared">COMPLETED ✓</span>
-          </div>
-          <h3 class="quest-title">Login Page Automation (Selenium &amp; Java)</h3>
-          <p class="quest-description">
-            Engineered an automated regression test suite using Selenium WebDriver and Core Java to validate multi-scenario user authentication.
-          </p>
-          <div class="quest-highlights">
-            <div class="highlight-item">
-              <strong>Scenarios:</strong> Automated positive, negative, boundary, SQL-injection prevention, and empty field edge-cases for valid/invalid login credentials.
-            </div>
-            <div class="highlight-item">
-              <strong>Cross-Browser:</strong> Executed automated test scripts across multiple browsers and asserted error/success toast alerts and redirects.
-            </div>
-            <div class="highlight-item">
-              <strong>Efficiency:</strong> Drastically accelerated release validation cycles by slashing manual execution turnaround time.
-            </div>
-          </div>
-          <div class="quest-tags">
-            <span>Selenium WebDriver</span>
-            <span>Core Java</span>
-            <span>Automated Regressions</span>
-            <span>Locators &amp; Waits</span>
+          <div class="proj-tags">
+            <span>Mobile Testing</span>
+            <span>Audio Playback</span>
+            <span>DTT</span>
+            <span>Exploratory QA</span>
           </div>
         </div>
 
@@ -907,170 +391,117 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- SECTION 5: EDUCATION                                      -->
+    <!-- SKILLS SECTION                                            -->
     <!-- ======================================================== -->
-    <section id="education" class="content-section">
-      <div class="section-badge-header">
-        <h2 class="section-title">Education</h2>
-        <div class="section-underline"></div>
+    <section class="content-block" id="skills">
+      <div class="block-header">
+        <h2 class="block-title">Technical Skills &amp; Tools</h2>
+        <p class="block-desc">The testing methodologies, frameworks, and tools I use to deliver defect-free products.</p>
       </div>
 
-      <div class="academy-card">
-        <div class="academy-icon-box">
-          <span class="mortar-icon">🎓</span>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>🛡️ Testing Disciplines</h4>
+          <p>Manual Testing, Automation Testing, Functional Testing, Regression &amp; Retesting, Smoke &amp; Sanity Testing, Usability Testing, Cross-Browser Testing, Mobile Testing (iOS &amp; Android), Boundary Value Analysis, UI Testing.</p>
         </div>
-        <div class="academy-info">
-          <div class="academy-meta">
-            <span class="grad-year">COMPLETED: 07/2025</span>
-            <span class="cgpa-pill">⭐ CGPA: 7.77 / 10.0</span>
-          </div>
-          <h3 class="degree-title">Bachelor of Technology (B.Tech)</h3>
-          <h4 class="dept-name">Electronics &amp; Communication Engineering (ECE)</h4>
-          <p class="institution-name">Techno International New Town</p>
-          <p class="academy-summary">
-            Strong foundation in digital logic, circuit systems, computer architecture, analytical problem solving, and software engineering principles.
-          </p>
+
+        <div class="skill-group">
+          <h4>⚙️ Selenium &amp; Core Java</h4>
+          <p>Selenium WebDriver, Selenium Architecture, Java POM (Page Object Model), Locators (XPath, CSS), Synchronization &amp; Explicit Waits, TestNG, Alerts &amp; Frames Handling, OOPs Concepts, Exception Handling, Collections.</p>
+        </div>
+
+        <div class="skill-group">
+          <h4>🤖 AI Voice &amp; LLM Testing</h4>
+          <p>AI Voice Assistant Testing, NLU Intent Recognition, Entity Handling, Fallback Testing, LLM Accuracy &amp; Context Retention Validation, Conversational Edge Cases.</p>
+        </div>
+
+        <div class="skill-group">
+          <h4>🗄️ Database, API &amp; Tools</h4>
+          <p>Basic API Testing, REST APIs, JSON, Postman, SQL Queries, Joins, RDBMS Concepts, DDL/DML, Jira (Defect Tracking &amp; Triage), Chrome DevTools, Eclipse IDE, Git, GitHub, RTM.</p>
         </div>
       </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- SECTION 6: INTERACTIVE BUG CATCHER MINI-GAME              -->
+    <!-- GOTTA CATCH 'EM ALL (The Zero Quotient Easter Egg)        -->
     <!-- ======================================================== -->
-    <section id="minigame" class="content-section minigame-section">
-      <div class="section-badge-header">
-        <div class="badge-index">MINI-GAME</div>
-        <h2 class="section-title">POKÉ-BUG CATCHER SIMULATOR</h2>
-        <div class="section-underline"></div>
-        <p class="section-subtext">Help Smritilata catch and squash hidden software bugs with your Pokéball!</p>
-      </div>
-
-      <div class="game-arena-wrapper">
-        <div class="game-hud">
-          <div class="game-score">BUGS SQUASHED: <span id="game-score-val">0</span></div>
-          <div class="game-timer">TIME: <span id="game-time-val">30s</span></div>
-          <button id="start-game-btn" class="pokedex-btn-red">START BUG HUNT</button>
+    <section class="pokemon-crowd-section">
+      <div class="crowd-inner">
+        <div class="crowd-text">
+          <span class="crowd-tag">INTERACTIVE COMPANION</span>
+          <h3 class="crowd-title">Gotta catch 'em all!</h3>
+          <p class="crowd-sub">Pick a Pokémon companion to explore Smritilata's portfolio with you:</p>
+        </div>
+        
+        <div class="crowd-picker" id="pokemon-picker">
+          <button class="poke-btn active" data-pokemon="⚡ Pikachu" data-color="#fde047">⚡ Pikachu</button>
+          <button class="poke-btn" data-pokemon="🦊 Eevee" data-color="#fdba74">🦊 Eevee</button>
+          <button class="poke-btn" data-pokemon="🔥 Charmander" data-color="#f87171">🔥 Charmander</button>
+          <button class="poke-btn" data-pokemon="💧 Squirtle" data-color="#67e8f9">💧 Squirtle</button>
+          <button class="poke-btn" data-pokemon="🍃 Bulbasaur" data-color="#86efac">🍃 Bulbasaur</button>
+          <button class="poke-btn" data-pokemon="👻 Gengar" data-color="#c084fc">👻 Gengar</button>
         </div>
 
-        <div class="game-canvas-board" id="game-board">
-          <div class="game-instruction-overlay" id="game-intro">
-            <p>Click START to unleash bugs! Click on the bugs quickly to throw a Pokéball and catch them before they escape!</p>
-          </div>
+        <div class="active-companion-badge" id="companion-badge">
+          <span>Active Companion:</span> <strong id="active-companion-name">⚡ Pikachu</strong>
         </div>
       </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- SECTION 7: CONTACT                                        -->
+    <!-- CONTACT SECTION                                           -->
     <!-- ======================================================== -->
-    <section id="contact" class="content-section">
-      <div class="section-badge-header">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="section-underline"></div>
-        <p class="section-subtext">Feel free to reach out—I would love to chat about QA opportunities!</p>
+    <section class="content-block" id="contact">
+      <div class="block-header">
+        <h2 class="block-title">Get in Touch</h2>
+        <p class="block-desc">I am open for Software QA Engineer, Manual QA, and Test Automation roles. Let's talk!</p>
       </div>
 
-      <div class="contact-transmission-grid">
-        <!-- Direct Coordinates -->
-        <div class="coordinates-card">
-          <h3 class="card-subtitle">TRAINER FREQUENCIES</h3>
-
-          <div class="comm-channel">
-            <div class="channel-icon">📧</div>
-            <div class="channel-info">
-              <span class="chan-name">DIRECT EMAIL</span>
-              <a href="mailto:smritilatasarkar2018@gmail.com" class="chan-data">smritilatasarkar2018@gmail.com</a>
-            </div>
-          </div>
-
-          <div class="comm-channel">
-            <div class="channel-icon">📞</div>
-            <div class="channel-info">
-              <span class="chan-name">VOICE &amp; WHATSAPP</span>
-              <a href="tel:+916294410077" class="chan-data">+91 6294410077</a>
-            </div>
-          </div>
-
-          <div class="comm-channel">
-            <div class="channel-icon">🌐</div>
-            <div class="channel-info">
-              <span class="chan-name">LINKEDIN NETWORK</span>
-              <a href="https://linkedin.com/in/smritilata-sarkar-a81a4428a" target="_blank" rel="noopener noreferrer" class="chan-data">linkedin.com/in/smritilata-sarkar-a81a4428a</a>
-            </div>
-          </div>
-
-          <div class="comm-channel">
-            <div class="channel-icon">📦</div>
-            <div class="channel-info">
-              <span class="chan-name">FEATURED GITHUB REPOSITORIES</span>
-              <a href="https://github.com/smritilata/Indiamart-application-testing" target="_blank" rel="noopener noreferrer" class="chan-data">github.com/smritilata/Indiamart-application-testing</a>
-              <a href="https://github.com/smritilata669/flipkart-selenium-automation" target="_blank" rel="noopener noreferrer" class="chan-data" style="margin-top: 0.25rem;">github.com/smritilata669/flipkart-selenium-automation</a>
-            </div>
-          </div>
-
-          <div class="comm-channel">
-            <div class="channel-icon">📍</div>
-            <div class="channel-info">
-              <span class="chan-name">BASE OF OPERATIONS</span>
-              <span class="chan-data">Kolkata, West Bengal, India (Open to Remote &amp; On-Site)</span>
-            </div>
-          </div>
-
-          <div class="pokeball-catch-box">
-            <h4>CATCH RATE: 100%</h4>
-            <p>Immediate availability for Software QA Engineer, Manual QA, Automation Intern / Full-time roles.</p>
-          </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <span class="c-icon">📧</span>
+          <h4>Email</h4>
+          <a href="mailto:smritilatasarkar2018@gmail.com">smritilatasarkar2018@gmail.com</a>
         </div>
 
-        <!-- Interactive Transmission Form -->
-        <div class="transmission-form-card">
-          <h3 class="card-subtitle">TRANSMIT A MESSAGE</h3>
-          <form id="contact-form" onsubmit="handleFormSubmit(event)">
-            <div class="form-group">
-              <label for="sender-name">YOUR NAME / COMPANY</label>
-              <input type="text" id="sender-name" placeholder="e.g. Ash Ketchum (Tech Recruiter)" required>
-            </div>
-            <div class="form-group">
-              <label for="sender-email">YOUR EMAIL</label>
-              <input type="email" id="sender-email" placeholder="name@company.com" required>
-            </div>
-            <div class="form-group">
-              <label for="sender-subject">MISSION SUBJECT</label>
-              <input type="text" id="sender-subject" placeholder="QA Role / Interview Opportunity" required>
-            </div>
-            <div class="form-group">
-              <label for="sender-message">DISPATCH DETAILS</label>
-              <textarea id="sender-message" rows="4" placeholder="Hello Smritilata, we'd love to discuss our QA Engineer position with you..." required></textarea>
-            </div>
-            <button type="submit" class="pokedex-btn-red send-btn">
-              <span>🚀 SEND TRANSMISSION</span>
-            </button>
-            <div id="form-feedback" class="form-feedback-message"></div>
-          </form>
+        <div class="contact-card">
+          <span class="c-icon">📞</span>
+          <h4>Phone / WhatsApp</h4>
+          <a href="tel:+916294410077">+91 6294410077</a>
+        </div>
+
+        <div class="contact-card">
+          <span class="c-icon">🌐</span>
+          <h4>LinkedIn</h4>
+          <a href="https://linkedin.com/in/smritilata-sarkar-a81a4428a" target="_blank" rel="noopener noreferrer">linkedin.com/in/smritilata-sarkar</a>
+        </div>
+
+        <div class="contact-card">
+          <span class="c-icon">📦</span>
+          <h4>GitHub</h4>
+          <a href="https://github.com/smritilata" target="_blank" rel="noopener noreferrer">github.com/smritilata</a>
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- ======================================================== -->
   <!-- FOOTER                                                   -->
   <!-- ======================================================== -->
-  <footer class="pokedex-footer">
-    <div class="footer-container">
+  <footer class="site-footer">
+    <div class="footer-wrap">
       <div class="footer-left">
-        <span class="footer-brand">Smritilata Sarkar</span>
-        <span class="footer-sub">Software QA Engineer • Bug Hunter Champion</span>
-      </div>
-      <div class="footer-center">
-        <p>Built with ❤️, CSS 3D Magic, HTML5 Canvas &amp; Web Audio Synth</p>
+        <strong>Smritilata Sarkar</strong> &bull; Software QA Engineer
+        <span class="footer-sub">Tested with curiosity &amp; patience.</span>
       </div>
       <div class="footer-right">
-        <a href="#summon-stage" class="back-to-top-btn" id="back-to-ball">▲ BACK TO POKÉBALL</a>
+        <a href="Smritilata_Sarkar_Resume.html" target="_blank" class="footer-link">📄 1-Page Resume (PDF)</a>
+        <a href="#about" class="footer-link">Back to top ↑</a>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="audio.js"></script>
   <script src="script.js"></script>
 </body>
