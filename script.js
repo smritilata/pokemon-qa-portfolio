@@ -1,6 +1,6 @@
 /**
  * Smritilata Sarkar — Minimal Pokémon QA Portfolio
- * Interactive Controller (thezeroquotient style)
+ * Interactive Controller (thezeroquotient style + 3D Pokéball Animation)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,11 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const soundToggle = document.getElementById('sound-toggle');
   const mobileToggle = document.getElementById('mobile-toggle');
   const mobileDrawer = document.getElementById('mobile-drawer');
+  const summonStage = document.getElementById('summon-stage');
+  const mainBall = document.getElementById('main-pokeball');
+  const triggerBtn = document.getElementById('trigger-summon-btn');
+  const skipBtn = document.getElementById('skip-summon-btn');
+  const replayBtn = document.getElementById('replay-summon-btn');
+  const floatingPokeball = document.getElementById('floating-pokeball');
   const trainerCard = document.getElementById('trainer-card');
   const pokemonPicker = document.getElementById('pokemon-picker');
   const activeCompanionName = document.getElementById('active-companion-name');
+  const miniPokeball = document.getElementById('mini-pokeball');
   const navLinks = document.querySelectorAll('.nav-link');
   const mLinks = document.querySelectorAll('.m-link');
+
+  let isOpening = false;
+  let isSummoned = false;
 
   // =========================================================================
   // 1. PARTICLE CANVAS BURST ENGINE
@@ -36,14 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
       this.x = x;
       this.y = y;
       const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 8 + 3;
+      const speed = Math.random() * 10 + 4;
       this.vx = Math.cos(angle) * speed;
       this.vy = Math.sin(angle) * speed;
-      this.radius = Math.random() * 3.5 + 2;
+      this.radius = Math.random() * 4 + 2;
       this.life = 1.0;
-      this.decay = Math.random() * 0.03 + 0.02;
+      this.decay = Math.random() * 0.025 + 0.015;
       
-      const defaultColors = ['#ef4444', '#0284c7', '#fde047', '#10b981', '#a855f7'];
+      const defaultColors = ['#ef4444', '#0284c7', '#fde047', '#10b981', '#a855f7', '#ffffff'];
       this.color = customColor || defaultColors[Math.floor(Math.random() * defaultColors.length)];
     }
 
@@ -51,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.x += this.vx;
       this.y += this.vy;
       this.vy += 0.12; // subtle gravity
-      this.vx *= 0.96;
+      this.vx *= 0.97;
       this.life -= this.decay;
     }
 
@@ -59,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.save();
       ctx.globalAlpha = Math.max(0, this.life);
       ctx.fillStyle = this.color;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = this.color;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fill();
@@ -66,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function spawnBurst(originX, originY, color = null, count = 35) {
+  function spawnBurst(originX, originY, color = null, count = 45) {
     for (let i = 0; i < count; i++) {
       particles.push(new Particle(originX, originY, color));
     }
@@ -94,7 +106,139 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 2. SOUND TOGGLE
+  // 2. 3D POKÉBALL OPENING / SUMMON ANIMATION
+  // =========================================================================
+  function summonQAEngineer() {
+    if (isOpening || isSummoned || !summonStage) return;
+    isOpening = true;
+
+    // Wobble & audio
+    if (window.pokeAudio) {
+      window.pokeAudio.playBallClick();
+      window.pokeAudio.playBallWobble();
+    }
+
+    if (mainBall) {
+      mainBall.classList.add('ball-shaking');
+    }
+
+    // Phase 1: Ball shaking
+    setTimeout(() => {
+      if (mainBall) mainBall.classList.remove('ball-shaking');
+      summonStage.className = 'hero-card-col stage-opening';
+
+      // Calculate center of Pokéball for burst blast
+      let centerX = window.innerWidth / 2;
+      let centerY = window.innerHeight / 2;
+      if (mainBall) {
+        const rect = mainBall.getBoundingClientRect();
+        centerX = rect.left + rect.width / 2;
+        centerY = rect.top + rect.height / 2;
+      }
+      spawnBurst(centerX, centerY, null, 70);
+
+      // Play laser release audio
+      if (window.pokeAudio) {
+        window.pokeAudio.playBallRelease();
+      }
+
+      // Phase 2: Deploy Trainer Card
+      setTimeout(() => {
+        summonStage.className = 'hero-card-col stage-opened';
+        isSummoned = true;
+        isOpening = false;
+
+        // Victory jingle fanfare
+        if (window.pokeAudio) {
+          window.pokeAudio.playVictoryJingle();
+        }
+
+        // Secondary subtle sparkle burst
+        setTimeout(() => {
+          if (trainerCard) {
+            const cardRect = trainerCard.getBoundingClientRect();
+            spawnBurst(cardRect.left + cardRect.width / 2, cardRect.top + cardRect.height / 2, '#38bdf8', 25);
+          }
+        }, 200);
+      }, 420);
+    }, 380);
+  }
+
+  function resetSummon() {
+    if (!summonStage) return;
+    summonStage.className = 'hero-card-col stage-closed';
+    isSummoned = false;
+    isOpening = false;
+
+    if (window.pokeAudio) {
+      window.pokeAudio.playBallClick();
+    }
+  }
+
+  function skipSummon() {
+    if (!summonStage) return;
+    summonStage.className = 'hero-card-col stage-opened';
+    isSummoned = true;
+    isOpening = false;
+
+    if (window.pokeAudio) {
+      window.pokeAudio.playVictoryJingle();
+    }
+  }
+
+  // Event Listeners for Summon
+  if (mainBall) {
+    mainBall.addEventListener('click', () => {
+      if (!isSummoned) summonQAEngineer();
+    });
+  }
+
+  if (triggerBtn) {
+    triggerBtn.addEventListener('click', summonQAEngineer);
+  }
+
+  if (replayBtn) {
+    replayBtn.addEventListener('click', resetSummon);
+  }
+
+  if (skipBtn) {
+    skipBtn.addEventListener('click', skipSummon);
+  }
+
+  // Floating Action Pokéball Button
+  if (floatingPokeball) {
+    floatingPokeball.addEventListener('click', () => {
+      const rect = floatingPokeball.getBoundingClientRect();
+      spawnBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, '#ef4444', 25);
+
+      if (window.pokeAudio) {
+        window.pokeAudio.playBallClick();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      setTimeout(() => {
+        if (!isSummoned) {
+          summonQAEngineer();
+        } else {
+          // If already summoned, reset and re-summon for user delight!
+          resetSummon();
+          setTimeout(summonQAEngineer, 300);
+        }
+      }, 350);
+    });
+  }
+
+  // Spacebar to trigger summon when near top of the page
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' && !isSummoned && window.scrollY < 350 && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      summonQAEngineer();
+    }
+  });
+
+  // =========================================================================
+  // 3. SOUND TOGGLE
   // =========================================================================
   if (soundToggle) {
     soundToggle.addEventListener('click', () => {
@@ -112,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 3. MOBILE MENU TOGGLE
+  // 4. MOBILE MENU TOGGLE
   // =========================================================================
   if (mobileToggle && mobileDrawer) {
     mobileToggle.addEventListener('click', (e) => {
@@ -120,7 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileDrawer.classList.toggle('open');
     });
 
-    // Close when clicking any mobile link
     mLinks.forEach(link => {
       link.addEventListener('click', () => {
         mobileDrawer.classList.remove('open');
@@ -128,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Close when clicking outside
     document.addEventListener('click', (e) => {
       if (!mobileDrawer.contains(e.target) && !mobileToggle.contains(e.target)) {
         mobileDrawer.classList.remove('open');
@@ -137,13 +279,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 4. GOTTA CATCH 'EM ALL — COMPANION PICKER
+  // 5. GOTTA CATCH 'EM ALL — COMPANION PICKER WITH POKÉBALL CATCH ANIMATION
   // =========================================================================
   if (pokemonPicker) {
     const pokeButtons = pokemonPicker.querySelectorAll('.poke-btn');
 
     pokeButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         pokeButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
@@ -154,11 +296,18 @@ document.addEventListener('DOMContentLoaded', () => {
           activeCompanionName.textContent = pokeName;
         }
 
+        // Wobble mini-pokeball animation
+        if (miniPokeball) {
+          miniPokeball.classList.remove('wobble-catch');
+          void miniPokeball.offsetWidth; // trigger reflow
+          miniPokeball.classList.add('wobble-catch');
+        }
+
         // Particle burst at button center
         const rect = btn.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        spawnBurst(centerX, centerY, color, 28);
+        spawnBurst(centerX, centerY, color, 30);
 
         // Play catch audio
         if (window.pokeAudio) {
@@ -169,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 5. INTERACTIVE TRAINER CARD (Hover 3D Tilt + Tap Fanfare)
+  // 6. INTERACTIVE TRAINER CARD (Hover 3D Tilt + Tap Fanfare)
   // =========================================================================
   if (trainerCard) {
     trainerCard.addEventListener('mousemove', (e) => {
@@ -188,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
       trainerCard.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)';
     });
 
-    trainerCard.addEventListener('click', (e) => {
+    trainerCard.addEventListener('click', () => {
       const rect = trainerCard.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
@@ -201,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 6. SCROLL SPY & SOUND TRIGGERS ON NAVIGATION
+  // 7. SCROLL SPY & SOUND TRIGGERS ON NAVIGATION
   // =========================================================================
   navLinks.forEach(link => {
     link.addEventListener('click', () => {

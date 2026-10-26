@@ -21,7 +21,15 @@
   <header class="site-header">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">
-        <span class="avatar-dot"></span>
+        <span class="nav-pokeball-icon">
+          <svg class="spin-pokeball" viewBox="0 0 100 100" width="22" height="22">
+            <circle cx="50" cy="50" r="48" fill="#ef4444"/>
+            <path d="M2 50 A48 48 0 0 0 98 50 Z" fill="#ffffff"/>
+            <line x1="2" y1="50" x2="98" y2="50" stroke="#0f172a" stroke-width="8"/>
+            <circle cx="50" cy="50" r="16" fill="#ffffff" stroke="#0f172a" stroke-width="8"/>
+            <circle cx="50" cy="50" r="6" fill="#ef4444"/>
+          </svg>
+        </span>
         <span class="brand-text">Smritilata Sarkar</span>
         <span class="status-pill">Available for QA roles</span>
       </a>
@@ -106,9 +114,67 @@
           </div>
         </div>
 
-        <!-- Right Column: Interactive Pokémon Trainer Card -->
-        <div class="hero-card-col">
-          <div class="pokemon-trainer-card" id="trainer-card">
+        <!-- Right Column: Interactive 3D Pokéball Summon Stage & Trainer Card -->
+        <div class="hero-card-col stage-closed" id="summon-stage">
+          
+          <!-- Pokéball Assembly (Active in stage-closed & stage-opening) -->
+          <div class="pokeball-assembly-wrapper" id="pokeball-wrapper">
+            <div class="summon-light-pillar" id="light-pillar"></div>
+
+            <div class="pokeball-box">
+              <div class="pokeball-3d" id="main-pokeball" role="button" tabindex="0" title="Click Pokéball to Summon QA Champion!">
+                <div class="pokeball-energy-ring"></div>
+
+                <!-- Upper Shell -->
+                <div class="ball-shell shell-top">
+                  <div class="shell-reflection"></div>
+                </div>
+
+                <!-- Equatorial Black Belt & Central Release Button -->
+                <div class="ball-equator">
+                  <div class="equator-band"></div>
+                  <div class="center-latch-wrapper">
+                    <div class="latch-outer-ring">
+                      <div class="latch-button" id="pokeball-button">
+                        <div class="button-led"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Lower Shell -->
+                <div class="ball-shell shell-bottom">
+                  <div class="shell-shadow"></div>
+                </div>
+
+                <!-- Ground Floating Shadow -->
+                <div class="ball-ground-shadow"></div>
+              </div>
+            </div>
+
+            <div class="summon-prompt-box">
+              <button class="throw-ball-btn" id="trigger-summon-btn">
+                <span class="poke-icon">⚡</span>
+                <span>CLICK TO SUMMON QA</span>
+              </button>
+              <div class="summon-hint-group">
+                <span class="summon-hint">Click Pokéball or Press Space</span>
+                <span class="hint-divider">&bull;</span>
+                <button class="skip-summon-btn" id="skip-summon-btn" type="button">Instant view card &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summoned QA Trainer Card (Active in stage-opened) -->
+          <div class="summoned-card-wrapper" id="summoned-card-wrapper">
+            <div class="card-action-bar">
+              <button id="replay-summon-btn" class="resummon-pill" title="Return to Pokéball & Re-Summon">
+                <span class="poke-icon">⚡</span>
+                <span>Return to Pokéball &amp; Re-Summon</span>
+              </button>
+            </div>
+
+            <div class="pokemon-trainer-card" id="trainer-card">
             
             <!-- Card Header -->
             <div class="pcard-header">
@@ -226,7 +292,9 @@
               </div>
             </div>
 
+            </div>
           </div>
+
         </div>
 
       </div>
@@ -443,6 +511,9 @@
         </div>
 
         <div class="active-companion-badge" id="companion-badge">
+          <span class="companion-ball-drop">
+            <span class="mini-pokeball" id="mini-pokeball"></span>
+          </span>
           <span>Active Companion:</span> <strong id="active-companion-name">⚡ Pikachu</strong>
         </div>
       </div>
@@ -501,6 +572,18 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating Interactive Pokéball Action Button -->
+  <button class="floating-pokeball-fab" id="floating-pokeball" title="Click to Throw Pokéball / Summon QA!" aria-label="Throw Pokéball">
+    <div class="fab-pokeball">
+      <div class="fab-top"></div>
+      <div class="fab-center">
+        <div class="fab-btn"></div>
+      </div>
+      <div class="fab-bottom"></div>
+    </div>
+    <span class="fab-tooltip">Throw Pokéball! ⚡</span>
+  </button>
 
   <script src="audio.js"></script>
   <script src="script.js"></script>
